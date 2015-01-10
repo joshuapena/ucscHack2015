@@ -213,9 +213,12 @@ main.on('select', function(e) {
                     break;
             }
             // Update the alarms and gets rid of the option menu
-            //createAlarmItems();
-            //alarmOptions.hide();
+            alarmItems = createAlarmItems();
+            alarmOptions.hide();
+            main.section(0, section = {
+                items: alarmItems
             });
+        });
     }
     // Choose an option to chnage alarm
 });
