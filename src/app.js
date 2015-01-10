@@ -138,7 +138,7 @@ var createAlarm = function(callback) {
     alarms.push({
         time: formatTime( date.getHours(), date.getMinutes() ),
         hour: date.getHours() + 1,
-        minute: date.getMinutes() + 2,
+        minute: date.getMinutes() + 3,
         enabled: true
     });
     console.log("hour : " + date.getHours());
