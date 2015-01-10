@@ -60,8 +60,8 @@ var detectTimeLoop = function() {
 		if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
 			// vibrates.. add more later 
 			Vibe.vibrate('long');
-		}
 		console.log(i + ": I vibrated"); 
+		}
     }
 	
 	setTimeout(function() {
