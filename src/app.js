@@ -132,13 +132,13 @@ splashScreen.show();
 setTimeout(function() {
     splashScreen.hide();
     main.show();
-}, 400);
+}, 800);
 
 var createAlarm = function(callback) {
     alarms.push({
         time: formatTime( date.getHours(), date.getMinutes() ),
         hour: date.getHours() + 1,
-        minute: date.getMinutes() + 4,
+        minute: date.getMinutes() + 2,
         enabled: true
     });
 };
