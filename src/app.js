@@ -1,3 +1,9 @@
+/*
+ * Notes : 
+ * need to figure out if there is a way to continously check if
+ * the alarms sets off.
+ */
+
 /**
  * Welcome to Pebble.js!
  * Test
@@ -55,7 +61,7 @@ var main = new UI.Menu({
 main.show();
 */
 
-
+// The Spashscreen
 var spashScreen = new UI.Card({
     title: 'Alarm',
     icon: 'images/menu_icon.png',
@@ -83,6 +89,7 @@ var main = new UI.Menu({
     }]
 });
 
+// Shows the spashscreen and goes to the menu after 400 ms
 spashScreen.show();
 setTimeout(function() {
     spashScreen.hide();
@@ -110,13 +117,6 @@ main.on('select', function(e) {
             createAlarmItems(alarms);
             card.hide();
         };
-        /*
-        var card = new UI.Card();
-        card.title('A Card');
-        card.subtitle('Is a Window');
-        card.body('The simplest window type in Pebble.js.');
-        card.show();
-        */
     } else {
         // Otherwise the user selects an alarm
         // Creates the Menu for Alarm Options
