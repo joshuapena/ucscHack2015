@@ -144,8 +144,13 @@ setTimeout(function() {
 var createAlarm = function(callback) {
     alarms.push({
         time: formatTime( date.getHours(), date.getMinutes() + 2 ),
+<<<<<<< HEAD
         hour: date.getHours() + 1,
         minute: (date.getMinutes() + 2),
+=======
+        hour: date.getHours(),
+        minute: date.getMinutes() + 2,
+>>>>>>> corrected time
         enabled: true
     });
     console.log("hour : " + date.getHours());
