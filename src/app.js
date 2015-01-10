@@ -42,7 +42,6 @@ var createAlarmItems = function(alarms) {
     return items;
 };
 
-<<<<<<< HEAD
 var detectTimeLoop = function() {
 
 	for (int i = 0; i < alarms.length; i++) {
@@ -59,10 +58,9 @@ var detectTimeLoop = function() {
 };
 
 detectTimeLoop();
-=======
+
 // Sets up the alarms
 var alarmItems = createAlarmItems(alarms);
->>>>>>> origin/master
 
 /*
 // Creates a loop to make an array of hours
