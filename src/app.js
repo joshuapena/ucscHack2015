@@ -11,7 +11,7 @@ var Vector2 = require('vector2');
 
 // A for loop to make array of hours
 var hours = [];
-for (var i = 0; i < 24, i++) {
+for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
 }
 
