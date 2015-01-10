@@ -38,11 +38,12 @@ main.on('click', 'up', function(e) {
 
 main.on('click', 'select', function(e) {
   var wind = new UI.Window();
-  var textfield = new UI.Text({
+  //var time = new UI.TimeText();
+  var textfield = new UI.TimeText({
     position: new Vector2(0, 50),
     size: new Vector2(144, 30),
     font: 'gothic-24-bold',
-    text: 'Text Anywhere!',
+    text: '%M:%S, %a',
     textAlign: 'center'
   });
   wind.add(textfield);
