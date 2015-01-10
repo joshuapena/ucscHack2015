@@ -44,7 +44,7 @@ var createAlarmItems = function(alarms) {
 
 var detectTimeLoop = function() {
 
-	for (int i = 0; i < alarms.length; i++) {
+	for (var i = 0; i < alarms.length; i++) {
 	
 		if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
 		
