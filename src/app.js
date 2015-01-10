@@ -6,7 +6,9 @@
 
 // Calls in required stuff
 var UI = require('ui');
-var Vibe = require('ui/vibe');
+var Vibe = require('ui/vibe')
+var Settings = require('settings');
+
 //var Vector2 = require('vector2');
 
 // A for loop to make array of hours
@@ -15,9 +17,23 @@ for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
 }
 
-// Creates a loop to make an array of hours
+// Sets up the alarms
+var alarms = Settings.data('alarms') || [];
+
+var createAlarmItems = function(alarms) {
+    var items = [];
+    for (var i = 0; i < hours.length; i++) {
+        items.push({
+            title: alarms[i].time,
+            subtitle: alarms[i].enabled
+        });
+    }
+    return items;
+};
+
 /*
-var createItems = function() {
+// Creates a loop to make an array of hours
+var createHourItems = function() {
   var items = [];
   for (var i = 0; i < hours.length; i++) {
     items.push({
@@ -63,7 +79,7 @@ var main = new UI.Menu({
             title: 'Red Alarm'
         }, {
             title: 'Blue Alarm'
-        }]
+        }, createAlarmItems(alarms)]
     }]
 });
 
@@ -78,6 +94,21 @@ main.on('select', function(e) {
         card.subtitle('Is a Window');
         card.body('The simplest window type in Pebble.js.');
         card.show();
+    } else {
+        var alarmOptions = new UI.Menu({
+            sections : [{
+                items: [{
+                    subtitle: e.item.title
+                }, {
+                    title: 'Disable'
+                }, {
+                    title: 'Edit'
+                }, {
+                    title: 'Delete'
+                }]
+            }]
+        });
+        alarmOptions.show();
     }
 });
 
