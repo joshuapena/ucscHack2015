@@ -59,21 +59,12 @@ var detectTimeLoop = function() {
 
 detectTimeLoop();
 
-<<<<<<< HEAD
-
 /*
 	Formats time from the 24-hour clock to 12-hour
 */
-
 var formatTime = function( h, m ) {
-	
 	var hour = ( ( h % 12 != 0 ) ? ( h % 12 ): 12 )
 	return hour + ":" + m + " " + ( ( h < 12 ) ? "AM" : "PM" )
-=======
-var formatTime = function() {
-	var hour = ( ( date.getHours() % 12 != 0 ) ? date.getHours() % 12 : 12 )
-	return date.getHours() + ":" + date.getMinutes() + " " + ( ( date.getHours() < 12 ) ? "AM" : "PM" )
->>>>>>> origin/master
 }
 
 
@@ -161,7 +152,7 @@ main.on('select', function(e) {
                 minute: date.getMinutes() + 2,
                 enabled: true
             });
-            //createAlarmItems(alarms);
+            alarmItems = createAlarmItems(alarms);
             card.hide();
         });
     } else {
