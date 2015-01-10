@@ -71,7 +71,7 @@ var main = new UI.Menu({
 main.show();
 
 main.on('click', 'select', function(e) {
-    var item = menu.items(0);
+    var item = this.items(0);
     if (item.title == "Add New Alarm") {
         Vibe.vibrate('long');
         var card = new UI.Card();
