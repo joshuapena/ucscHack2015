@@ -151,6 +151,7 @@ var createAlarm = function(callback) {
 };
 
 main.on('select', function(e) {
+    console.log(e.sectionIndex);
     // If it is on the "New Alarm Option"
     if (e.itemIndex === 0) {
         // Has a random card as a placeholder
