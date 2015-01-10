@@ -12,7 +12,7 @@
 
 // Calls in required stuff
 var UI = require('ui');
-var Vibe = require('ui/vibe')
+var Vibe = require('ui/vibe');
 var Settings = require('settings');
 var date = new Date();
 
@@ -117,7 +117,7 @@ main.on('select', function(e) {
             });
             createAlarmItems(alarms);
             card.hide();
-        };
+        });
     } else {
         // Otherwise the user selects an alarm
         // Creates the Menu for Alarm Options
@@ -136,34 +136,34 @@ main.on('select', function(e) {
         });
         alarmOptions.show();
     }
+    // Choose an option to chnage alarm
+    alarmOptions.on('select', function(e) {
+        switch(e.itemIndex) {
+            case 0:
+                // Disable or Enable the Alarm
+                if (e.item.enabled) {
+                    e.item.enabled = false;
+                } else {
+                    e.item.enabled = true;
+                }
+                break;
+            case 1:
+                // Edit the time of the alarm
+                break;
+            case 2:
+                // Deletes the alarm
+                alarms.splice(e.itemIndex, 1);
+                break;
+            default:
+                console.log("error");
+                break;
+        }
+        // Update the alarms and gets rid of the option menu
+        createAlarmItems();
+        alarmOptions.hide();
+    });
 });
 
-// Not sure if this has to be in the block above
-alarmOptions.on('select', function(e) {
-    switch(e.itemIndex) {
-        case 0:
-            // Disable or Enable the Alarm
-            if (e.item.enabled) {
-                e.item.enabled = false;
-            } else {
-                e.item.enabled = true;
-            }
-            break;
-        case 1:
-            // Edit the time of the alarm
-            break;
-        case 2:
-            // Deletes the alarm
-            alarms.splice(e.itemIndex, 1);
-            break;
-        default:
-            console.log("error");
-            break;
-    }
-    // Update the alarms and gets rid of the option menu
-    createAlarmItems();
-    alarmOptions.hide();
-});
 
 
 // Code from before, I don't currently remove it for reference
