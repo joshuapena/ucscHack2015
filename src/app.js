@@ -116,9 +116,9 @@ var main = new UI.Menu({
 });
 
 // Shows the spashscreen and goes to the menu after 400 ms
-spashScreen.show();
+splashScreen.show();
 setTimeout(function() {
-    spashScreen.hide();
+    splashScreen.hide();
     main.show();
 }, 400);
 
