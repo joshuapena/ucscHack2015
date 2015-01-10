@@ -32,7 +32,7 @@ var createAlarmItems = function(alarms) {
     });
     console.log("alarm length : " + alarms.length);
     if (alarms.length > 0)
-        for (var i = 1; i < alarms.length + 1; i++) {
+        for (var i = 0; i < alarms.length; i++) {
             try {
                 items.push({
                     title: alarms[i].time,
