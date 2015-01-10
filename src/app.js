@@ -46,6 +46,8 @@ var detectTimeLoop = function() {
 
 	for (var i = 0; i < alarms.length; i++) {
 		if ( alarms[i].hour == date.getHours() + 1 && alarms[i].minute == date.getMinutes() ) {
+		
+			// vibrates.. add 
 			Vibe.vibrate('long');
 		}
 	}
@@ -60,7 +62,7 @@ detectTimeLoop();
 var formatTime = function() {
 
 	var hour = ( ( date.getHours() % 12 != 0 ) ? date.getHours() % 12 : 12 )
-	return date.getHours() + ":" + date.getMinutes() .. " " + ( ( date.getHours() < 12 ) ? "AM" : "PM" )
+	return date.getHours() + ":" + date.getMinutes() + " " + ( ( date.getHours() < 12 ) ? "AM" : "PM" )
 }
 
 // Sets up the alarms
