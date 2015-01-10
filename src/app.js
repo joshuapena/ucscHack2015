@@ -24,6 +24,7 @@ for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
 }
 
+var alarms = Settings.data('alarms') || [];
 var createAlarmItems = function(alarms) {
     var items = [];
     items.push({
@@ -41,7 +42,6 @@ var createAlarmItems = function(alarms) {
 };
 
 // Sets up the alarms
-var alarms = Settings.data('alarms') || [];
 var alarmItems = createAlarmItems(alarms);
 
 /*
