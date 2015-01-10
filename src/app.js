@@ -7,7 +7,7 @@
 // Calls in required stuff
 var UI = require('ui');
 var Vibe = require('ui/vibe');
-var Vector2 = require('vector2');
+//var Vector2 = require('vector2');
 
 // A for loop to make array of hours
 var hours = [];
@@ -71,7 +71,7 @@ var main = new UI.Menu({
 main.show();
 
 main.on('click', 'select', function(e) {
-    item = menu.items(0);
+    var item = menu.items(0);
     if (item.title == "Add New Alarm") {
         Vibe.vibrate('long');
         var card = new UI.Card();
