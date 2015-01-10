@@ -163,6 +163,8 @@ main.on('select', function(e) {
                 alarmItems = createAlarmItems(alarms);
             });
             card.hide();
+            main.hide();
+            main.show();
         });
     } else {
         // Otherwise the user selects an alarm
