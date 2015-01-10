@@ -31,7 +31,7 @@ var createAlarmItems = function(alarms) {
         title: "Add New Alarm"
     });
     console.log("added new alarm");
-    for (var i = 1; i < hours.length + 1; i++) {
+    for (var i = 1; i < alarms.length + 1; i++) {
         items.push({
             title: alarms[i].time,
             subtitle: alarms[i].enabled
