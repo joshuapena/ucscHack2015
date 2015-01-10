@@ -16,6 +16,7 @@ for (var i = 0; i < 24; i++) {
 }
 
 // Creates a loop to make an array of hours
+/*
 var createItems = function() {
   var items = [];
   for (var i = 0; i < hours.length; i++) {
@@ -25,6 +26,7 @@ var createItems = function() {
   }
   return items;
 };
+*/
 
 /*
 var main = new UI.Menu({
@@ -69,8 +71,6 @@ var main = new UI.Menu({
 main.show();
 
 main.on('click', 'select', function(e) {
-    if () {
-    }
 });
 
 /*
