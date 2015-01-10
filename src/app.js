@@ -19,6 +19,7 @@ var createItems = function() {
   return items;
 };
 
+/*
 var main = new UI.Menu({
    sections:[{
      items: createItems()
@@ -26,6 +27,7 @@ var main = new UI.Menu({
 });
 
 main.show();
+*/
 
 
 /*
@@ -37,7 +39,6 @@ main.show();
  *         });
  */
 
-/*
 var main = new UI.Menu({
     sections: [{
         items: [{
@@ -53,7 +54,6 @@ var main = new UI.Menu({
 main.section(1);
 
 main.show();
-*/
 
 /*
 main.on('click', 'up', function(e) {
