@@ -26,9 +26,13 @@ for (var i = 0; i < 24; i++) {
 
 // Sets up the alarms
 var alarms = Settings.data('alarms') || [];
+var alarmItems = createAlarmItems(alarms);
 
 var createAlarmItems = function(alarms) {
     var items = [];
+    items.push({
+        title: "Add New Alarm"
+    });
     for (var i = 0; i < hours.length; i++) {
         items.push({
             title: alarms[i].time,
@@ -66,14 +70,16 @@ var spashScreen = new UI.Card({
     title: 'Alarm',
     icon: 'images/menu_icon.png',
     subtitle: 'Welcome to Our App',
-    body: 'This is the spash page'
+    body: 'This is the splash page'
     //banner (future plans)
 });
 
 // Makes a menu with New Alarms
 var main = new UI.Menu({
     sections: [{
-        items: [{
+        items: alarmItems
+        /*
+            [{
             title: 'Add New Alarm',
             subtitle: 'New Alarm'
         }, {
@@ -85,6 +91,7 @@ var main = new UI.Menu({
             title: 'Red Alarm'
         }, {
             title: 'Blue Alarm'
+        */
         }]
         //, createAlarmItems(alarms)
     }]
