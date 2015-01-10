@@ -158,8 +158,8 @@ main.on('select', function(e) {
             Vibe.vibrate('long');
             createAlarm(function() {
                 alarmItems = createAlarmItems(alarms);
-                card.hide();
             });
+            card.hide();
         });
     } else {
         // Otherwise the user selects an alarm
