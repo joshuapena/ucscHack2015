@@ -4,11 +4,18 @@
  * This is where you write your app.
  */
 
+// Calls in required stuff
 var UI = require('ui');
 var Vibe = require('ui/vibe');
 var Vector2 = require('vector2');
-var hours = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 
+// A for loop to make a j
+var hours = [];
+for (var i = 0; i < 24, i++) {
+    hours.push(i + 1);
+}
+
+// Creates a loop to make an array of hours
 var createItems = function() {
   var items = [];
   for (var i = 0; i < hours.length; i++) {
@@ -39,6 +46,7 @@ main.show();
  *         });
  */
 
+// Makes a menu with New Alarms
 var main = new UI.Menu({
     sections: [{
         items: [{
@@ -77,12 +85,15 @@ main.on('click', 'up', function(e) {
 });
 */
 
+// When click middle button
 main.on('click', 'select', function(e) {
+    //test vibrqtion and date fubction
     if (new Date() == new Date()) {
         Vibe.vibrate('long');
     }
     var wind = new UI.Window();
     var time = new UI.TimeText();
+    // Time in Text form
     var textfield = new UI.TimeText({
         position: new Vector2(0, 50),
         size: new Vector2(144, 30),
