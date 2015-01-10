@@ -56,14 +56,13 @@ main.show();
 */
 
 
-/*
- * var main = new UI.Card({
- *   title: 'Pebble.js',
- *     icon: 'images/menu_icon.png',
- *       subtitle: 'Hello World!',
- *         body: 'Press any button.'
- *         });
- */
+var spashScreen = new UI.Card({
+    title: 'Alarm',
+    icon: 'images/menu_icon.png',
+    subtitle: 'Welcome to Our App',
+    body: 'This is the spash page'
+    //banner (future plans)
+});
 
 // Makes a menu with New Alarms
 var main = new UI.Menu({
@@ -84,8 +83,11 @@ var main = new UI.Menu({
     }]
 });
 
-
-main.show();
+spashScreen.show();
+setTimeout(function() {
+    spashScreen.hide();
+    main.show();
+}, 400);
 
 main.on('select', function(e) {
     // If it is on the "New Alarm Option"
