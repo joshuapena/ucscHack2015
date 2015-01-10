@@ -147,7 +147,7 @@ main.on('select', function(e) {
                 minute: date.getMinutes() + 2,
                 enabled: true
             });
-            createAlarmItems(alarms);
+            //createAlarmItems(alarms);
             card.hide();
         });
     } else {
