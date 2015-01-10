@@ -71,6 +71,14 @@ var main = new UI.Menu({
 main.show();
 
 main.on('click', 'select', function(e) {
+    item = menu.items(0);
+    if (item.title == "Add New Alarm") {
+        var card = new UI.Card();
+        card.title('A Card');
+        card.subtitle('Is a Window');
+        card.body('The simplest window type in Pebble.js.');
+        card.show();
+    }
 });
 
 /*
@@ -87,6 +95,7 @@ main.on('click', 'up', function(e) {
             }]
         }]
     });
+    */
     menu.on('select', function(e) {
         console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
         console.log('The item is titled "' + e.item.title + '"');
@@ -96,6 +105,7 @@ main.on('click', 'up', function(e) {
 */
 
 // When click middle button
+/*
 main.on('click', 'up', function(e) {
     //test vibrqtion and date fubction
     console.log("foo");
@@ -103,7 +113,7 @@ main.on('click', 'up', function(e) {
         Vibe.vibrate('long');
     }
     var wind = new UI.Window();
-    var time = new UI.TimeText();
+    //var time = new UI.TimeText();
     // Time in Text form
     var textfield = new UI.TimeText({
         position: new Vector2(0, 50),
@@ -115,6 +125,7 @@ main.on('click', 'up', function(e) {
     wind.add(textfield);
     wind.show();
 });
+*/
 
 /*
 main.on('click', 'down', function(e) {
