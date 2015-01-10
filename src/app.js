@@ -44,7 +44,7 @@ var createAlarmItems = function(alarms) {
 
 var detectTimeLoop = function() {
 
-	for (var i = 0; i < alarms.length; i++) {
+	for (var i = 1; i < alarms.length + 1; i++) {
 		if ( alarms[i].hour == date.getHours() + 1 && alarms[i].minute == date.getMinutes() ) {
 		
 			// vibrates.. add 
