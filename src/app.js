@@ -163,7 +163,6 @@ main.on('select', function(e) {
 
         // When click the middle button it makes an alarm
         card.on('click', 'select', function() {
-            Vibe.vibrate('long');
             createAlarm(function() {
                 alarmItems = createAlarmItems(alarms);
                 console.log('Items done');
