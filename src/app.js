@@ -31,15 +31,16 @@ var createAlarmItems = function(alarms) {
         title: "Add New Alarm"
     });
     console.log("added new alarm");
-    for (var i = 1; i < alarms.length + 1; i++) {
-        try {
-            items.push({
-                title: alarms[i].time,
-                subtitle: alarms[i].enabled
-            });
-            console.log(i);
-        } catch (err) {
-        }
+    if (alarms.length > 0)
+        for (var i = 1; i < alarms.length + 1; i++) {
+            try {
+                items.push({
+                    title: alarms[i].time,
+                    subtitle: alarms[i].enabled
+                });
+                console.log(i);
+            } catch (err) {
+            }
     }
     console.log("Created item list");
     return items;
