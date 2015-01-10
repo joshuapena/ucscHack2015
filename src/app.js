@@ -198,8 +198,8 @@ main.on('select', function(e) {
         });
         alarmOptions.show();
 
-        alarmOptions.on('select', function(f) {
-            switch(f.itemIndex) {
+        alarmOptions.on('select', function(e) {
+            switch(e.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
                     if (e.item.enabled) {
