@@ -168,7 +168,7 @@ main.on('select', function(e) {
                 console.log('Items done');
                 console.log(alarmItems);
                 card.hide();
-                main.section(1, alarmItems);
+                main.section(2, alarmItems);
             });
         });
     } else {
