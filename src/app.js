@@ -9,7 +9,7 @@ var UI = require('ui');
 var Vibe = require('ui/vibe');
 var Vector2 = require('vector2');
 
-// A for loop to make a j
+// A for loop to make array of hours
 var hours = [];
 for (var i = 0; i < 24, i++) {
     hours.push(i + 1);
@@ -26,7 +26,6 @@ var createItems = function() {
   return items;
 };
 
-/*
 var main = new UI.Menu({
    sections:[{
      items: createItems()
@@ -34,7 +33,6 @@ var main = new UI.Menu({
 });
 
 main.show();
-*/
 
 
 /*
@@ -46,6 +44,7 @@ main.show();
  *         });
  */
 
+/*
 // Makes a menu with New Alarms
 var main = new UI.Menu({
     sections: [{
@@ -62,6 +61,7 @@ var main = new UI.Menu({
 main.section(1);
 
 main.show();
+*/
 
 /*
 main.on('click', 'up', function(e) {
@@ -86,7 +86,7 @@ main.on('click', 'up', function(e) {
 */
 
 // When click middle button
-main.on('click', 'select', function(e) {
+main.on('click', 'up', function(e) {
     //test vibrqtion and date fubction
     if (new Date() == new Date()) {
         Vibe.vibrate('long');
