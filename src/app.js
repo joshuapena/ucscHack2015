@@ -55,6 +55,7 @@ main.section(1);
 main.show();
 */
 
+/*
 main.on('click', 'up', function(e) {
     var menu = new UI.Menu({
         sections: [{
@@ -74,6 +75,7 @@ main.on('click', 'up', function(e) {
     });
     menu.show();
 });
+*/
 
 main.on('click', 'select', function(e) {
     if (new Date() == new Date()) {
@@ -92,6 +94,7 @@ main.on('click', 'select', function(e) {
     wind.show();
 });
 
+/*
 main.on('click', 'down', function(e) {
     var card = new UI.Card();
     card.title('A Card');
@@ -99,3 +102,4 @@ main.on('click', 'down', function(e) {
     card.body('The simplest window type in Pebble.js.');
     card.show();
 });
+*/
