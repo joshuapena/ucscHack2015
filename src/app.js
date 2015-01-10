@@ -42,6 +42,23 @@ var createAlarmItems = function(alarms) {
     return items;
 };
 
+var detectTimeLoop = function() {
+
+	for (int i = 0; i < alarms.length; i++) {
+	
+		if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
+		
+			Vibe.vibrate('long');
+		}
+	}
+	
+	setTimeout(function() {
+		detectTimeLoop();
+	}, 1000);
+};
+
+detectTimeLoop();
+
 /*
 // Creates a loop to make an array of hours
 var createHourItems = function() {
@@ -77,7 +94,7 @@ var spashScreen = new UI.Card({
 // Makes a menu with New Alarms
 var main = new UI.Menu({
     sections: [{
-        items: alarmItems
+        items: alarmItems [{
         /*
             [{
             title: 'Add New Alarm',
