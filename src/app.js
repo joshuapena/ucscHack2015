@@ -53,6 +53,7 @@ var main = new UI.Menu({
             title: 'Add New Alarm',
             subtitle: 'New Alarm'
         }, {
+            // Dr. Seuss
             title: 'One Alarm'
         }, {
             title: 'Two Alarm'
@@ -64,9 +65,13 @@ var main = new UI.Menu({
     }]
 });
 
-main.section(1);
 
 main.show();
+
+main.on('click', 'select', function(e) {
+    if () {
+    }
+});
 
 /*
 main.on('click', 'up', function(e) {
@@ -93,6 +98,7 @@ main.on('click', 'up', function(e) {
 // When click middle button
 main.on('click', 'up', function(e) {
     //test vibrqtion and date fubction
+    console.log("foo");
     if (new Date() == new Date()) {
         Vibe.vibrate('long');
     }
