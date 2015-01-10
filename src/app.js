@@ -47,7 +47,7 @@ var createAlarmItems = function(alarms) {
 };
 
 var detectTimeLoop = function() {
-
+    date = new Date();
 	for (var i = 0; i < alarms.length; i++) {
 	
 		console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
