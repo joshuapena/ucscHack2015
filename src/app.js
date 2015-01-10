@@ -49,9 +49,9 @@ var detectTimeLoop = function() {
                 // vibrates.. add 
                 Vibe.vibrate('long');
             }
+            console.log(i); 
         } catch (err) {
         }
-        console.log(i); 
     }
 	setTimeout(function() {
 		detectTimeLoop();
