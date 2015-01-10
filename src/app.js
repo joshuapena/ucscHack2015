@@ -30,7 +30,7 @@ var createAlarmItems = function(alarms) {
     items.push({
         title: "Add New Alarm"
     });
-    console.log("added new alarm");
+    console.log("alarm length : " + alarms.length);
     if (alarms.length > 0)
         for (var i = 1; i < alarms.length + 1; i++) {
             try {
