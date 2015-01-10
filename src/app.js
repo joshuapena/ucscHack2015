@@ -67,8 +67,9 @@ detectTimeLoop();
 	Formats time from the 24-hour clock to 12-hour
 */
 var formatTime = function( h, m ) {
-	var hour = ( h % 12 !== 0 ? h % 12 : 12 )
-	return hour + ":" + m + " " + ( ( h < 12 ) ? "AM" : "PM" );
+	var hour = ( h % 12 !== 0 ? h % 12 : 12 );
+    var minute = m < 10 ? "0" + m : m;
+	return hour + ":" + minute + " " + ( ( h < 12 ) ? "AM" : "PM" );
 }
 
 
