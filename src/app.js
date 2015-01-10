@@ -79,7 +79,7 @@ var alarmItems = createAlarmItems(alarms);
 // Creates a loop to make an array of hours
 var createHourItems = function() {
   var items = [];
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i hideurs.length; i++) {
     items.push({
       title: hours[i]
     });
@@ -168,7 +168,7 @@ main.on('select', function(e) {
                 console.log('Items done');
                 console.log(alarmItems);
                 card.hide();
-                main.show();
+                main.section(0, alarmItems);
             });
         });
     } else {
