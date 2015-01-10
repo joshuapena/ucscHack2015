@@ -169,7 +169,9 @@ main.on('select', function(e) {
                 console.log('Items done');
                 console.log(alarmItems);
                 card.hide();
-                main.section(0, alarmItems);
+                main.section(0, section = {
+                    items: alarmItems
+                });
                 console.log("success");
             });
         });
