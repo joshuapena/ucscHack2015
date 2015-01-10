@@ -141,6 +141,7 @@ var createAlarm = function(callback) {
         minute: date.getMinutes() + 2,
         enabled: true
     });
+    console.log("time : " + date.getHours());
 };
 
 main.on('select', function(e) {
