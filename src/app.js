@@ -33,12 +33,14 @@ var createAlarmItems = function(alarms) {
     items.push({
         title: "Add New Alarm"
     });
+    console.log("added new alarm");
     for (var i = 0; i < hours.length; i++) {
         items.push({
             title: alarms[i].time,
             subtitle: alarms[i].enabled
         });
     }
+    console.log("Created item list");
     return items;
 };
 
@@ -91,8 +93,8 @@ var main = new UI.Menu({
             title: 'Red Alarm'
         }, {
             title: 'Blue Alarm'
-        */
         }]
+        */
         //, createAlarmItems(alarms)
     }]
 });
