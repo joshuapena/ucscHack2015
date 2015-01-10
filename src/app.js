@@ -48,7 +48,7 @@ var createAlarmItems = function(alarms) {
 var detectTimeLoop = function() {
 	for (var i = 1; i < alarms.length + 1; i++) {
         try {
-            if ( alarms[i].hour == date.getHours() + 1 && alarms[i].minute == date.getMinutes() ) {
+            if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
                 // vibrates.. add 
                 Vibe.vibrate('long');
             }
