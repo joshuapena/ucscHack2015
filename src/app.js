@@ -38,7 +38,7 @@ var createAlarmItems = function(alarms) {
                 subtitle: alarms[i].enabled
             });
             console.log(i);
-        } catch {
+        } catch (err) {
         }
     }
     console.log("Created item list");
