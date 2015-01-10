@@ -161,9 +161,11 @@ main.on('select', function(e) {
             Vibe.vibrate('long');
             createAlarm(function() {
                 alarmItems = createAlarmItems(alarms);
+                console.log('Items done');
+                console.log(alarmItems);
+                card.hide();
+                main.show();
             });
-            card.hide();
-            main.show();
         });
     } else {
         // Otherwise the user selects an alarm
