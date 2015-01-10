@@ -133,6 +133,15 @@ setTimeout(function() {
     main.show();
 }, 400);
 
+var createAlarm = function(callback) {
+    alarms.push({
+        time: formatTime( date.getHours(), date.getMinutes() ),
+        hour: date.getHours() + 1,
+        minute: date.getMinutes() + 2,
+        enabled: true
+    });
+};
+
 main.on('select', function(e) {
     // If it is on the "New Alarm Option"
     if (e.itemIndex === 0) {
@@ -146,14 +155,10 @@ main.on('select', function(e) {
         // When click the middle button it makes an alarm
         card.on('click', 'select', function() {
             Vibe.vibrate('long');
-            alarms.push({
-				time: formatTime( date.getHours(), date.getMinutes() ),
-                hour: date.getHours() + 1,
-                minute: date.getMinutes() + 2,
-                enabled: true
+            createAlarm(function() {
+                alarmItems = createAlarmItems(alarms);
+                card.hide();
             });
-            alarmItems = createAlarmItems(alarms);
-            card.hide();
         });
     } else {
         // Otherwise the user selects an alarm
