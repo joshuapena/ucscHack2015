@@ -59,11 +59,17 @@ var detectTimeLoop = function() {
 
 detectTimeLoop();
 
-var formatTime = function() {
 
-	var hour = ( ( date.getHours() % 12 != 0 ) ? date.getHours() % 12 : 12 )
-	return date.getHours() + ":" + date.getMinutes() + " " + ( ( date.getHours() < 12 ) ? "AM" : "PM" )
+/*
+	Formats time from the 24-hour clock to 12-hour
+*/
+
+var formatTime = function( h, m ) {
+	
+	var hour = ( ( h % 12 != 0 ) ? ( h % 12 ): 12 )
+	return hour + ":" + m + " " + ( ( h < 12 ) ? "AM" : "PM" )
 }
+
 
 // Sets up the alarms
 var alarmItems = createAlarmItems(alarms);
@@ -144,7 +150,7 @@ main.on('select', function(e) {
         card.on('click', 'select', function() {
             Vibe.vibrate('long');
             alarms.push({
-				time: formatTime(),
+				time: formatTime( date.getHours(), date.getMinutes() ),
                 hour: date.getHours() + 1,
                 minute: date.getMinutes() + 2,
                 enabled: true
