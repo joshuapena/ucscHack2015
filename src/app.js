@@ -47,18 +47,22 @@ var createAlarmItems = function(alarms) {
 };
 
 var detectTimeLoop = function() {
-	for (var i = 1; i < alarms.length + 1; i++) {
-        try {
-            console.log("alarm " + alarms[i].hour + "h  " + alarm[i].minute + "m");
-            console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
-            if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
-                // vibrates.. add 
-                Vibe.vibrate('long');
-            }
-            console.log(i + ": I vibrated"); 
-        } catch (err) {
-        }
+
+	for (var i = 0; i < alarms.length; i++) {
+	
+		console.log("alarm " + alarms[i].hour + "h  " + alarm[i].minute + "m");
+		console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
+			
+		// break if no longer valid alarm(s)
+		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
+		
+		if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
+			// vibrates.. add more later 
+			Vibe.vibrate('long');
+		}
+		console.log(i + ": I vibrated"); 
     }
+	
 	setTimeout(function() {
 		detectTimeLoop();
 	}, 1000);
