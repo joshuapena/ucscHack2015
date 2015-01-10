@@ -26,6 +26,7 @@ var createItems = function() {
   return items;
 };
 
+/*
 var main = new UI.Menu({
    sections:[{
      items: createItems()
@@ -33,6 +34,7 @@ var main = new UI.Menu({
 });
 
 main.show();
+*/
 
 
 /*
@@ -44,7 +46,6 @@ main.show();
  *         });
  */
 
-/*
 // Makes a menu with New Alarms
 var main = new UI.Menu({
     sections: [{
@@ -52,8 +53,13 @@ var main = new UI.Menu({
             title: 'Add New Alarm',
             subtitle: 'New Alarm'
         }, {
-            title: 'Other Item',
-            subtitle: 'Try'
+            title: 'One Alarm'
+        }, {
+            title: 'Two Alarm'
+        }, {
+            title: 'Red Alarm'
+        }, {
+            title: 'Blue Alarm'
         }]
     }]
 });
@@ -61,7 +67,6 @@ var main = new UI.Menu({
 main.section(1);
 
 main.show();
-*/
 
 /*
 main.on('click', 'up', function(e) {
