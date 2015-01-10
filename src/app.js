@@ -85,7 +85,8 @@ var main = new UI.Menu({
             title: 'Red Alarm'
         }, {
             title: 'Blue Alarm'
-        }, createAlarmItems(alarms)]
+        }]
+        //, createAlarmItems(alarms)
     }]
 });
 
