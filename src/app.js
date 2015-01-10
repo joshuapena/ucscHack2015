@@ -143,7 +143,7 @@ var createAlarm = function(callback) {
     });
     console.log("hour : " + date.getHours());
     console.log("minute : " + date.getMinutes());
-    console.log("time : " + formatTime(date.getHours(), date.getMinutes());
+    //console.log("time : " + formatTime(date.getHours(), date.getMinutes()));
 };
 
 main.on('select', function(e) {
