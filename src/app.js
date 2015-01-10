@@ -50,7 +50,8 @@ var detectTimeLoop = function() {
 
 	for (var i = 0; i < alarms.length; i++) {
 	
-		console.log("alarm " + alarms[i].hour + "h  " + alarm[i].minute + "m");
+		console.log("alarm " + alarms[i].hour + "h ");
+        console.log(alarm[i].minute + "m");
 		console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
 		// break if no longer valid alarm(s)
