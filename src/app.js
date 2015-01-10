@@ -45,9 +45,7 @@ var createAlarmItems = function(alarms) {
 var detectTimeLoop = function() {
 
 	for (var i = 0; i < alarms.length; i++) {
-	
-		if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
-		
+		if ( alarms[i].hour == date.getHours() + 1 && alarms[i].minute == date.getMinutes() ) {
 			Vibe.vibrate('long');
 		}
 	}
@@ -97,7 +95,7 @@ var splashScreen = new UI.Card({
 // Makes a menu with New Alarms
 var main = new UI.Menu({
     sections: [{
-        items: alarmItems [{
+        items: alarmItems
         /*
             [{
             title: 'Add New Alarm',
