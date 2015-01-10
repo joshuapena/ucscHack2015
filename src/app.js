@@ -124,8 +124,6 @@ main.on('select', function(e) {
         var alarmOptions = new UI.Menu({
             sections : [{
                 items: [{
-                    subtitle: e.item.title
-                }, {
                     title: 'Disable'
                 }, {
                     title: 'Edit'
@@ -159,7 +157,7 @@ main.on('select', function(e) {
                 break;
         }
         // Update the alarms and gets rid of the option menu
-        createAlarmItems();
+        //createAlarmItems();
         alarmOptions.hide();
     });
 });
