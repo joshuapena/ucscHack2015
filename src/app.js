@@ -59,6 +59,7 @@ var detectTimeLoop = function() {
 
 detectTimeLoop();
 
+<<<<<<< HEAD
 
 /*
 	Formats time from the 24-hour clock to 12-hour
@@ -68,6 +69,11 @@ var formatTime = function( h, m ) {
 	
 	var hour = ( ( h % 12 != 0 ) ? ( h % 12 ): 12 )
 	return hour + ":" + m + " " + ( ( h < 12 ) ? "AM" : "PM" )
+=======
+var formatTime = function() {
+	var hour = ( ( date.getHours() % 12 != 0 ) ? date.getHours() % 12 : 12 )
+	return date.getHours() + ":" + date.getMinutes() + " " + ( ( date.getHours() < 12 ) ? "AM" : "PM" )
+>>>>>>> origin/master
 }
 
 
@@ -173,35 +179,35 @@ main.on('select', function(e) {
             }]
         });
         alarmOptions.show();
+
+        alarmOptions.on('select', function(e) {
+            switch(e.itemIndex) {
+                case 0:
+                    // Disable or Enable the Alarm
+                    if (e.item.enabled) {
+                        e.item.enabled = false;
+                    } else {
+                        e.item.enabled = true;
+                    }
+                    break;
+                case 1:
+                    // Edit the time of the alarm
+                    break;
+                case 2:
+                    // Deletes the alarm
+                    alarms.splice(e.itemIndex, 1);
+                    break;
+                default:
+                    console.log("error");
+                    break;
+            }
+            // Update the alarms and gets rid of the option menu
+            //createAlarmItems();
+            //alarmOptions.hide();
+            });
     }
     // Choose an option to chnage alarm
-    alarmOptions.on('select', function(e) {
-        switch(e.itemIndex) {
-            case 0:
-                // Disable or Enable the Alarm
-                if (e.item.enabled) {
-                    e.item.enabled = false;
-                } else {
-                    e.item.enabled = true;
-                }
-                break;
-            case 1:
-                // Edit the time of the alarm
-                break;
-            case 2:
-                // Deletes the alarm
-                alarms.splice(e.itemIndex, 1);
-                break;
-            default:
-                console.log("error");
-                break;
-        }
-        // Update the alarms and gets rid of the option menu
-        //createAlarmItems();
-        alarmOptions.hide();
-    });
 });
-
 
 
 // Code from before, I don't currently remove it for reference
