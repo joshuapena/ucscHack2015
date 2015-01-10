@@ -24,24 +24,25 @@ for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
 }
 
-// Sets up the alarms
-var alarms = Settings.data('alarms') || [];
-var alarmItems = createAlarmItems(alarms);
-
+var alarms = [];
 var createAlarmItems = function(alarms) {
     var items = [];
     items.push({
         title: "Add New Alarm"
     });
-    for (var i = 0; i < hours.length; i++) {
+    console.log("added new alarm");
+    for (var i = 1; i < hours.length + 1; i++) {
         items.push({
             title: alarms[i].time,
             subtitle: alarms[i].enabled
         });
+        console.log(i);
     }
+    console.log("Created item list");
     return items;
 };
 
+<<<<<<< HEAD
 var detectTimeLoop = function() {
 
 	for (int i = 0; i < alarms.length; i++) {
@@ -58,6 +59,10 @@ var detectTimeLoop = function() {
 };
 
 detectTimeLoop();
+=======
+// Sets up the alarms
+var alarmItems = createAlarmItems(alarms);
+>>>>>>> origin/master
 
 /*
 // Creates a loop to make an array of hours
@@ -82,8 +87,8 @@ var main = new UI.Menu({
 main.show();
 */
 
-// The Spashscreen
-var spashScreen = new UI.Card({
+// The Splashscreen
+var splashScreen = new UI.Card({
     title: 'Alarm',
     icon: 'images/menu_icon.png',
     subtitle: 'Welcome to Our App',
@@ -108,8 +113,8 @@ var main = new UI.Menu({
             title: 'Red Alarm'
         }, {
             title: 'Blue Alarm'
-        */
         }]
+        */
         //, createAlarmItems(alarms)
     }]
 });
