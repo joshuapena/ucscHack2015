@@ -70,7 +70,7 @@ var main = new UI.Menu({
 
 main.show();
 
-main.on('select',
+main.on('select', (
     if (itemIndex === 0) {
         Vibe.vibrate('long');
         var card = new UI.Card();
@@ -79,7 +79,7 @@ main.on('select',
         card.body('The simplest window type in Pebble.js.');
         card.show();
     }
-);
+));
 
 /*
 // Try but doesn't work
