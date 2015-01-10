@@ -10,6 +10,22 @@ var alarmOptions = new UI.Menu({
     }]
 });
 
+/*
+var alarmOptions = function(e.) {
+    this = new UI.Menu({
+        sections: [{
+            items: [{
+                title: 'Disable'
+            }, {
+                title: 'Edit'
+            }, {
+                title: 'Delete'
+            }]
+        }]
+    });
+};
+*/
+
 alarmOptions.on('select', function(e) {
     switch(e.itemIndex) {
         case 1:
