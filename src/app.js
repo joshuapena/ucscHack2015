@@ -24,7 +24,7 @@ for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
 }
 
-var alarms = Settings.data('alarms') || [];
+var alarms = [];
 var createAlarmItems = function(alarms) {
     var items = [];
     items.push({
@@ -32,11 +32,11 @@ var createAlarmItems = function(alarms) {
     });
     console.log("added new alarm");
     for (var i = 1; i < hours.length + 1; i++) {
-        console.log(i);
         items.push({
             title: alarms[i].time,
             subtitle: alarms[i].enabled
         });
+        console.log(i);
     }
     console.log("Created item list");
     return items;
