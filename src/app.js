@@ -70,6 +70,19 @@ var main = new UI.Menu({
 
 main.show();
 
+main.on('select', {
+    if (itemIndex === 0) {
+        Vibe.vibrate('long');
+        var card = new UI.Card();
+        card.title('A Card');
+        card.subtitle('Is a Window');
+        card.body('The simplest window type in Pebble.js.');
+        card.show();
+    }
+});
+
+/*
+// Try but doesn't work
 main.on('click', 'select', function(e) {
     var item = this.items(0);
     if (item.title == "Add New Alarm") {
@@ -81,6 +94,7 @@ main.on('click', 'select', function(e) {
         card.show();
     }
 });
+*/
 
 /*
 main.on('click', 'up', function(e) {
