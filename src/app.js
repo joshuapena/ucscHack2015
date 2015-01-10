@@ -88,13 +88,16 @@ var main = new UI.Menu({
 main.show();
 
 main.on('select', function(e) {
+    // If it is on the "New Alarm Option"
     if (e.itemIndex === 0) {
+        // Has a random card as a placeholder
         var card = new UI.Card();
         card.title('A Card');
         card.subtitle('Is a Window');
         card.body('The simplest window type in Pebble.js.');
         card.show();
 
+        // When click the middle button it makes an alarm
         card.on('click', 'select', function() {
             Vibe.vibrate('long');
             alarms.push({
@@ -113,6 +116,8 @@ main.on('select', function(e) {
         card.show();
         */
     } else {
+        // Otherwise the user selects an alarm
+        // Creates the Menu for Alarm Options
         var alarmOptions = new UI.Menu({
             sections : [{
                 items: [{
@@ -130,6 +135,7 @@ main.on('select', function(e) {
     }
 });
 
+// Not sure if this has to be in the block above
 alarmOptions.on('select', function(e) {
     switch(e.itemIndex) {
         case 0:
@@ -156,6 +162,8 @@ alarmOptions.on('select', function(e) {
     alarmOptions.hide();
 });
 
+
+// Code from before, I don't currently remove it for reference
 /*
 // Try but doesn't work
 main.on('click', 'select', function(e) {
