@@ -48,11 +48,13 @@ var createAlarmItems = function(alarms) {
 var detectTimeLoop = function() {
 	for (var i = 1; i < alarms.length + 1; i++) {
         try {
+            console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
+            console.log("alarm " + alarms[i].hour + "h  " + alarm[i].minute + "m");
             if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
                 // vibrates.. add 
                 Vibe.vibrate('long');
             }
-            console.log(i); 
+            console.log(i + ": I vibrated"); 
         } catch (err) {
         }
     }
