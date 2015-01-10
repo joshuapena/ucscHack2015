@@ -139,9 +139,9 @@ setTimeout(function() {
 
 var createAlarm = function(callback) {
     alarms.push({
-        time: formatTime( date.getHours(), date.getMinutes() ),
+        time: formatTime( date.getHours(), date.getMinutes() + 2 ),
         hour: date.getHours() + 1,
-        minute: (date.getMinutes() + 10),
+        minute: (date.getMinutes() + 2),
         enabled: true
     });
     console.log("hour : " + date.getHours());
