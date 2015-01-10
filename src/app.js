@@ -5,6 +5,7 @@
  */
 
 var UI = require('ui');
+var Vibe = require('ui/vibe');
 var Vector2 = require('vector2');
 var hours = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 
@@ -18,13 +19,13 @@ var createItems = function() {
   return items;
 };
 
-var menu = new UI.Menu({
+var main = new UI.Menu({
    sections:[{
      items: createItems()
   }]
 });
 
-menu.show();
+main.show();
 
 
 /*
@@ -52,39 +53,43 @@ var main = new UI.Menu({
 main.section(1);
 
 main.show();
+*/
 
 main.on('click', 'up', function(e) {
-var menu = new UI.Menu({
-    sections: [{
-              items: [{
-                         title: 'Pebble.js',
-    icon: 'images/menu_icon.png',
-    subtitle: 'Can do Menus'
-                     }, {
-                         title: 'Second Item',
-    subtitle: 'Subtitle Text'
-                     }]
-              }]
-                          });
-        menu.on('select', function(e) {
-                console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-                    console.log('The item is titled "' + e.item.title + '"');
-                      });
-          menu.show();
+    var menu = new UI.Menu({
+        sections: [{
+            items: [{
+                title: 'Pebble.js',
+                icon: 'images/menu_icon.png',
+                subtitle: 'Can do Menus'
+            }, {
+                title: 'Second Item',
+                subtitle: 'Subtitle Text'
+            }]
+        }]
+    });
+    menu.on('select', function(e) {
+        console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
+        console.log('The item is titled "' + e.item.title + '"');
+    });
+    menu.show();
 });
 
 main.on('click', 'select', function(e) {
-      var wind = new UI.Window();
-      var time = new UI.TimeText();
-      var textfield = new UI.TimeText({
-          position: new Vector2(0, 50),
-          size: new Vector2(144, 30),
-          font: 'gothic-24-bold',
-          text: '%M:%S, %a',
-          textAlign: 'center'
-      });
-      wind.add(textfield);
-      wind.show();
+    if (new Date() == new Date()) {
+        Vibe.vibrate('long');
+    }
+    var wind = new UI.Window();
+    var time = new UI.TimeText();
+    var textfield = new UI.TimeText({
+        position: new Vector2(0, 50),
+        size: new Vector2(144, 30),
+        font: 'gothic-24-bold',
+        text: '%M:%S, %a',
+        textAlign: 'center'
+    });
+    wind.add(textfield);
+    wind.show();
 });
 
 main.on('click', 'down', function(e) {
@@ -94,4 +99,3 @@ main.on('click', 'down', function(e) {
     card.body('The simplest window type in Pebble.js.');
     card.show();
 });
-*/
