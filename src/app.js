@@ -32,11 +32,14 @@ var createAlarmItems = function(alarms) {
     });
     console.log("added new alarm");
     for (var i = 1; i < alarms.length + 1; i++) {
-        items.push({
-            title: alarms[i].time,
-            subtitle: alarms[i].enabled
-        });
-        console.log(i);
+        try {
+            items.push({
+                title: alarms[i].time,
+                subtitle: alarms[i].enabled
+            });
+            console.log(i);
+        } catch {
+        }
     }
     console.log("Created item list");
     return items;
