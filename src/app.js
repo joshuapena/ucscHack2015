@@ -50,8 +50,8 @@ var detectTimeLoop = function() {
     date = new Date();
 	for (var i = 0; i < alarms.length; i++) {
 	
-		console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
-		console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
+		//console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
+		//console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
@@ -226,6 +226,7 @@ main.on('select', function(e) {
             main.section(0, section = {
                 items: alarmItems
             });
+            console.log('updated alarms');
         });
     }
     // Choose an option to chnage alarm
