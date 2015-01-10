@@ -8,6 +8,7 @@
 var UI = require('ui');
 var Vibe = require('ui/vibe')
 var Settings = require('settings');
+var date = new Date();
 
 //var Vector2 = require('vector2');
 
@@ -88,12 +89,29 @@ main.show();
 
 main.on('select', function(e) {
     if (e.itemIndex === 0) {
-        Vibe.vibrate('long');
         var card = new UI.Card();
         card.title('A Card');
         card.subtitle('Is a Window');
         card.body('The simplest window type in Pebble.js.');
         card.show();
+
+        card.on('click', 'select', function() {
+            Vibe.vibrate('long');
+            alarms.push({
+                hour: date.getHours() + 1,
+                minute: date.getMinutes() + 2,
+                enabled: true
+            });
+            createAlarmItems(alarms);
+            card.hide();
+        };
+        /*
+        var card = new UI.Card();
+        card.title('A Card');
+        card.subtitle('Is a Window');
+        card.body('The simplest window type in Pebble.js.');
+        card.show();
+        */
     } else {
         var alarmOptions = new UI.Menu({
             sections : [{
@@ -110,6 +128,32 @@ main.on('select', function(e) {
         });
         alarmOptions.show();
     }
+});
+
+alarmOptions.on('select', function(e) {
+    switch(e.itemIndex) {
+        case 0:
+            // Disable or Enable the Alarm
+            if (e.item.enabled) {
+                e.item.enabled = false;
+            } else {
+                e.item.enabled = true;
+            }
+            break;
+        case 1:
+            // Edit the time of the alarm
+            break;
+        case 2:
+            // Deletes the alarm
+            alarms.splice(e.itemIndex, 1);
+            break;
+        default:
+            console.log("error");
+            break;
+    }
+    // Update the alarms and gets rid of the option menu
+    createAlarmItems();
+    alarmOptions.hide();
 });
 
 /*

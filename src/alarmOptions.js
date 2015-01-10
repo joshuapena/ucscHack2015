@@ -28,17 +28,18 @@ var alarmOptions = function(e.) {
 
 alarmOptions.on('select', function(e) {
     switch(e.itemIndex) {
-        case 1:
+        case 0:
             // Disable or Enable the Alarm
             break;
-        case 2:
+        case 1:
             //Edit the time of the alarm
             break;
-        case 3:
+        case 2:
             // Deletes the alarm
             break;
         default:
             console.log("error");
             break;
     }
+    // Update the alarms for
 });
