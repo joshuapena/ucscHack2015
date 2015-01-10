@@ -194,8 +194,8 @@ main.on('select', function(e) {
         });
         alarmOptions.show();
 
-        alarmOptions.on('select', function(e) {
-            switch(e.itemIndex) {
+        alarmOptions.on('select', function(f) {
+            switch(f.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
                     if (e.item.enabled) {
@@ -217,7 +217,7 @@ main.on('select', function(e) {
                     break;
             }
             // Update the alarms and gets rid of the option menu
-            alarmItems = createAlarmItems(alarms);
+            alarmItems = createAlarmItems(alarm);
             alarmOptions.hide();
             main.section(0, section = {
                 items: alarmItems
