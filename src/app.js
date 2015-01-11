@@ -92,7 +92,6 @@ var detectTimeLoop = function() {
 				instructionsCard.subtitle('Is going off!');
 				instructionsCard.body('Press 3 buttons or shake watch to turn it off.');
                 main.hide();
-                splashScreen.show();
 
                 var commandCard = new UI.Card();
                 commandCard.title('Do This');
@@ -117,6 +116,7 @@ var detectTimeLoop = function() {
                 }
                 commandCard.body((3 - count) + " more times");
 
+                instructionsCard.show();
                 setTimeout(function() {
                     instructionsCard.hide();
                     commandCard.show();
