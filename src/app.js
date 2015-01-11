@@ -173,7 +173,7 @@ var detectTimeLoop = function() {
 					checkDisable(0);
 				});
 				
-				commmandCard.on('click', 'up', function(e) {
+				commandCard.on('click', 'up', function(e) {
 					checkDisable(1);
 				});
 				
