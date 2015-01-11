@@ -2,10 +2,15 @@
  * Welcome to Alarm48
  * 
  * The team :
+ * Programmers : 
  * Joshua Pena
  * Tristan Iverson
+ * 
+ * Research :
  * Francisco Requena
  * Ceaser Bazua
+ * 
+ * Business :
  * Cody Li
  * Thomas Bryant
  */
