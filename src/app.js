@@ -17,7 +17,7 @@ var Settings = require('settings');
 var Accel = require('ui/accel');
 var date = new Date();
 
-var time = require('time.js');
+//var time = require('time.js');
 //var Vector2 = require('vector2');
 
 // initialize
@@ -87,6 +87,7 @@ var detectTimeLoop = function() {
 				card.title('Alarm');
 				card.subtitle('Is going off!');
 				card.body('Press \'select\' to turn it off.');
+                main.hide();
 				card.show();
 				
 				var index = i;
@@ -218,11 +219,16 @@ main.on('select', function(e) {
     // If it is on the "New Alarm Option"
     if (e.itemIndex === 0) {
         // Has a random card as a placeholder
+        var wind = new UI.Wind();
+
+        /*
         var card = new UI.Card();
         card.title('A Card');
         card.subtitle('Is a Window');
         card.body('The simplest window type in Pebble.js.');
         card.show();
+        */
+        wind.show();
 
         // When click the middle button it makes an alarm
         card.on('click', 'select', function() {
