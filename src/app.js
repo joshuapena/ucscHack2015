@@ -282,21 +282,21 @@ main.on('select', function(e) {
         // Has a random card as a placeholder
         //var wind = new UI.Wind();
 		
-		var wind = new UI.Window({ backgroundColor: 'black'});
+        var wind = new UI.Window({ backgroundColor: 'black'});
 		var timeText = new UI.Text({
 			text: formatTime( date.getHours(), date.getMinutes() ),
 			font: 'gothic-28-bold',
 			color: 'white',
-      position: new Vector2(0, 0),
-      size: new Vector2(144, 168),
+            position: new Vector2(0, 0),
+            size: new Vector2(144, 168),
 			//backgroundColor: 'black',
 			textAlign: 'center'
 		});
 		
-		wind.show();
-      console.log('window loaded');
-		wind.add( timeText );
-      console.log('added the text');
+        wind.show();
+        console.log('window loaded');
+        wind.add( timeText );
+        console.log('added the text');
 		
 		// 
 		var time = [ date.getHours(), date.getMinutes(), date.getHours() < 12 ? 'AM' : 'PM' ];
@@ -323,8 +323,8 @@ main.on('select', function(e) {
 		});
 		
 		wind.on('click', 'up', function(e) {
-      console.log("up clicked");
-	  console.log( "stage: " + stage );
+            console.log("up clicked");
+            console.log( "stage: " + stage );
 			if ( stage === 1 ) {
 				
 				time[0] = ( time[0] + 1 ) % 24;
@@ -338,27 +338,23 @@ main.on('select', function(e) {
 			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
 		});
 		
-		
 		wind.on('click', 'down', function(e) {
-      console.log('down clicked');
-	  console.log( "stage: " + stage );
+            console.log('down clicked');
+            console.log( "stage: " + stage );
 			if ( stage === 1 ) {
 				
-			  time[0] = ( time[0] - 1 ) % 24;
-			  if (time[0] < 0) {
-				time[0] = 11;
-			  }
+                time[0] = ( time[0] - 1 ) % 24;
+                if (time[0] < 0)
+                    time[0] = 11;
 			} else if ( stage === 2 ) {
-				
-				time[1] = ( time[1] - 1 ) % 60;
-				time (time[1] < 0) {
+                time[1] = ( time[1] - 1 ) % 60;
+                if (time[1] < 0)
 					time[1] = 59;
-				}
 			} else {
 			
 				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
 			}
-      console.log(time[0]);
+            console.log(time[0]);
 			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
 		});
 		
