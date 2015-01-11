@@ -283,6 +283,7 @@ main.on('select', function(e) {
             }
             // Update the alarms and gets rid of the option menu
             alarmOptions.hide();
+            alarmItems = createAlarmItems(alarms);
             main.section(0, section = {
                 items: alarmItems
             });
