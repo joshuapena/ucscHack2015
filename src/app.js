@@ -157,6 +157,7 @@ var detectTimeLoop = function() {
 
                     if ( count >= 3 ) {
                         console.log("alarm has stopped");
+                        alarms[index].inGame = false;
                         alarms[index].allowVib = false;
                         commandCard.hide();
                         main.show();
