@@ -266,6 +266,7 @@ main.on('select', function(e) {
         });
 
         // When click the middle button it makes an alarm
+        /*
         card.on('click', 'select', function() {
             createAlarm(function() {
                 alarmItems = createAlarmItems(alarms);
@@ -280,6 +281,7 @@ main.on('select', function(e) {
                 //time.hourChange.show();
             });
         });
+        */
     } else {
         // Otherwise the user selects an alarm
         // Creates the Menu for Alarm Options
