@@ -257,6 +257,20 @@ var createAlarm = function( timeStuff, callback ) {
     callback();
 };
 
+var updateAlarm = function(timeStuff, index, callback) {
+    var finalHour = timeStuff[2] === "AM" ? timeStuff[0] : timeStuff[0] + 12;
+    console.log("in updateAlarm, the index is : " + index);
+    alarms[index] = {
+        time : formatTime( finalHour, timeStuff[1] ),
+        hour : finalHour,
+        minute : timeStuff[1],
+        enabled : true,
+        allowVib : true
+    };
+  
+    callback();
+};
+
 main.on('select', function(e) {
 
 	date = new Date();
@@ -407,11 +421,8 @@ main.on('select', function(e) {
                     break;
                 case 1:
                     var initalTimeValues = {
-                        time : alarms[e.itemIndex - 1].time,
                         hour : alarms[e.itemIndex - 1].hour,
-                        minute : alarms[e.itemIndex - 1].minute,
-                        enabled : true,
-                        allowVib : true
+                        minute : alarms[e.itemIndex - 1].minute
                     };
                     
                     // Edit the time of the alarm
@@ -434,18 +445,19 @@ main.on('select', function(e) {
                     var time = [ initalTimeValues.hour, initalTimeValues.minute, initalTimeValues.hour < 12 ? 'AM' : 'PM' ];
                     var stage = 1;
                     
-                    wind.on('click', 'select', function(e) {
+                    wind.on('click', 'select', function(f) {
                         console.log('select clicked; stage complete');
                         stage++;
                         
                         // done
                         if ( stage > 3 ) {
-                            createAlarm( time, function() {
+                            console.log('calling updateAlarm\nindex : ' + (e.itemIndex - 1));
+                            updateAlarm( time, e.itemIndex - 1,function() {
                                 alarmItems = createAlarmItems(alarms);
                                 console.log('Items done');
                                 console.log(alarmItems);
                                 wind.hide();
-                                main.show();
+                                alarmOptions.hide();
                                 main.section(0, section = {
                                     items: alarmItems
                                 });
