@@ -119,15 +119,16 @@ var detectTimeLoop = function() {
 				
 				card.on('click', 'up', function(e) {
 					checkDisable();
-				})
+				});
 				
 				card.on('click', 'down', function(e) {
 					checkDisable();
-				})
+				});
 				
 				card.on('accelTap', function(e) {
 					checkDisable();
 				});
+            }
 		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
 					|| ( alarms[i].hour === date.getHours() && alarms[i].minute !== date.getMinutes() )
 					|| ( alarms[i].minute === date.getMinutes() && alarms[i].hour !== date.getHours() ) ) {
