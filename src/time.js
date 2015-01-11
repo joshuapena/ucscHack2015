@@ -36,7 +36,7 @@ minutesChange.on('select', function(e) {
 var hourChange = new UI.Menu({
     section : [{
         items : hourItems
-    }];
+    }]
 });
 
 hourChange.on('select', function(e) {
