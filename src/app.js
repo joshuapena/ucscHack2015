@@ -345,7 +345,7 @@ main.on('select', function(e) {
 				time[1] = ( time[1] - 1 ) % 60;
 			} else {
 			
-				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
+				time[2] = ( time[2] === 'PM' ? 'PM' : 'AM' );
 			}
       
       console.log(time[0]);
