@@ -151,7 +151,7 @@ var detectTimeLoop = function() {
                     }
                     commandCard.body((3 - count) + " more times");
 
-                    var action = Math.floor(Math.random() * 3);
+                    action = Math.floor(Math.random() * 3);
                     console.log("new action : " + action);
 
                     if ( count >= 3 ) {
