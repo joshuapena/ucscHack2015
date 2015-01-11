@@ -96,10 +96,8 @@ var detectTimeLoop = function() {
 		console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
         var success = true;
-        for (var j = 0; j < alarms.length; j++) {
-            if (detectInGame()) {
-                success = false;
-            }
+        if (detectInGame()) {
+            success = false;
         }
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute || !success ) { break; }
