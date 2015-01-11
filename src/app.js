@@ -275,7 +275,7 @@ main.on('select', function(e) {
                     title: "AM"
                 }, {
                     title: "PM"
-                ]}
+                }]
             }]
         });
         */
@@ -291,7 +291,7 @@ main.on('select', function(e) {
         minuteMenu.on('select', function(f) {
             console.log("you have chosen : " + f.itemIndex + 1 + " m");
             timeHolder.minute = f.itemIndex + 1;
-            timeOfDayMenu.show();
+            //timeOfDayMenu.show();
         });
 
         // When click the middle button it makes an alarm
