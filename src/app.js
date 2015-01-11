@@ -1,13 +1,13 @@
-/*
- * Notes : 
- * need to figure out if there is a way to continously check if
- * the alarms sets off.
- */
-
 /**
- * Welcome to Pebble.js!
- * Test
- * This is where you write your app.
+ * Welcome to Alarm48
+ * 
+ * The team :
+ * Joshua Pena
+ * Tristan Iverson
+ * Francisco Requena
+ * Ceaser Bazua
+ * Cody Li
+ * Thomas Bryant
  */
 
 // Calls in required stuff
