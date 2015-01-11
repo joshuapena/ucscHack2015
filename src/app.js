@@ -244,23 +244,13 @@ setTimeout(function() {
     main.show();
 }, 3000);
 
-<<<<<<< HEAD
 var createAlarm = function( timeStuff, callback ) {
-=======
-var createAlarm = function( h, m, callback ) {
->>>>>>> look for errors
 
 	var finalHour = timeStuff[2] === "AM" ? timeStuff[0] : timeStuff[0] + 12;
     alarms.push({
-<<<<<<< HEAD
         time: formatTime( finalHour, timeStuff[1] ),
         hour: finalHour,
         minute: timeStuff[1],
-=======
-        time: formatTime( h, m ),
-        hour: h,
-        minute: m,
->>>>>>> look for errors
         enabled: true,
 		allowVib: true
     });
@@ -318,43 +308,23 @@ main.on('select', function(e) {
 			
 			// done
 			if ( stage > 3 ) {
-<<<<<<< HEAD
-=======
-			
->>>>>>> look for errors
 				createAlarm( time[0], time[1], function() {
 					alarmItems = createAlarmItems(alarms);
 					console.log('Items done');
 					console.log(alarmItems);
-<<<<<<< HEAD
 					wind.hide();
-=======
-          wind.hide();
->>>>>>> time appears
 					main.section(0, section = {
 						items: alarmItems
 					});
 					console.log("success");
 				});
-<<<<<<< HEAD
-=======
-				
->>>>>>> time appears
 				main.show();
 			}
 		});
 		
 		wind.on('click', 'up', function(e) {
-<<<<<<< HEAD
-		
       console.log("up clicked");
 	  console.log( "stage: " + stage );
-<<<<<<< HEAD
-=======
-      console.log("up clicked");
->>>>>>> time appears
-=======
->>>>>>> look for errors
 			if ( stage === 1 ) {
 				
 				time[0] = ( time[0] + 1 ) % 24;
@@ -371,14 +341,7 @@ main.on('select', function(e) {
 		
 		wind.on('click', 'down', function(e) {
       console.log('down clicked');
-<<<<<<< HEAD
-<<<<<<< HEAD
 	  console.log( "stage: " + stage );
-=======
->>>>>>> time appears
-=======
-	  console.log( "stage: " + stage );
->>>>>>> look for errors
 			if ( stage === 1 ) {
 				
 			  time[0] = ( time[0] - 1 ) % 24;
