@@ -95,14 +95,10 @@ var detectTimeLoop = function() {
 		console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
 		console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
-        var success = true;
-        if (detectInGame()) {
-            success = false;
-        }
 		// break if no longer valid alarm(s)
-		if ( !alarms[i].hour || !alarms[i].minute || !success ) { break; }
+		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
 		
-		if ( !detectInGame() && ( ( alarms[i].inGame ) || ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) ) {
+		if ( ( ( alarms[i].inGame ) || ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) ) {
 			
 			Vibe.vibrate('long');
 			console.log(i + ": I vibrated");
