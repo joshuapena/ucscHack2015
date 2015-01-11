@@ -264,22 +264,22 @@ main.on('select', function(e) {
         });
         alarmOptions.show();
 
-        alarmOptions.on('select', function(e) {
-            switch(e.itemIndex) {
+        alarmOptions.on('select', function(f) {
+            switch(f.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
                     for (var i = 0; i < alarms.length; i++) {
                         console.log(i + " : " + alarms[i].enabled);
                     }
-                    alarms[e.itemIndex - 0].enabled = !alarms[e.itemIndex - 0].enabled;
+                    alarms[f.itemIndex - 0].enabled = !alarms[f.itemIndex - 0].enabled;
                     break;
                 case 1:
                     // Edit the time of the alarm
                     break;
                 case 2:
                     // Deletes the alarm
-                    alarms.splice(e.itemIndex - 2, 1);
-                    console.log("deleted at : " + e.itemIndex - 2);
+                    alarms.splice(f.itemIndex - 2, 1);
+                    console.log("deleted at : " + f.itemIndex - 2);
                     break;
                 default:
                     console.log("error");
