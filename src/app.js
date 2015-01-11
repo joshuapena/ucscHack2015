@@ -71,7 +71,6 @@ var createTimeItems = function(time) {
 var detectTimeLoop = function() {
     date = new Date();
 	for (var i = 0; i < alarms.length; i++) {
-        console.log(alarms[i].allowVib);
 		//console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
 		//console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
@@ -127,6 +126,7 @@ var detectTimeLoop = function() {
 				
 				card.on('accelTap', function(e) {
 					checkDisable();
+                    console.log("tap tap");
 				});
             }
 		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
