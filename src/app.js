@@ -285,16 +285,16 @@ main.on('select', function(e) {
         alarmOptions.show();
 
         alarmOptions.on('select', function(f) {
-            var indexOfAlarm = f.itemIndex;
-            console.log(indexOfAlarm);
+            var indexOfAlarm = e.itemIndex;
+            console.log('index of alarm : ' + indexOfAlarm);
             switch(f.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
                     for (var i = 0; i < alarms.length; i++) {
                         console.log(i + " : " + alarms[i].enabled);
-                        console.log(f.itemIndex + 1 + " : " + alarms[f.itemIndex + 1].enabled);
+                        console.log(e.itemIndex + 1 + " : " + alarms[e.itemIndex + 1].enabled);
                     }
-                    alarms[f.itemIndex - 0].enabled = !alarms[f.itemIndex - 0].enabled;
+                    alarms[e.itemIndex - 0].enabled = !alarms[e.itemIndex - 0].enabled;
                     break;
                 case 1:
                     // Edit the time of the alarm
