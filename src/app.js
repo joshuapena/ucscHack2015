@@ -30,32 +30,6 @@ for (var i = 0; i < 60; i++) {
     minutes.push(i + 1);
 }
 
-/*
-var hourItems = createTimeItems(hours);
-var minutesItems = createTimeItems(minutes);
-
-var minuteChange = new UI.Menu({
-    section : [{
-        items : minutesItems
-    }];
-
-    minuteChange.on('select', function(e) {
-        minuteChange.hide();
-    });
-});
-
-var hourChange = new UI.Menu({
-    section : [{
-        items : hourItems
-    }];
-
-    timeChange.on('select', function(e) {
-        hourChange.hide();
-        minuteChange.show();
-    });
-});
-*/
-
 var alarms = Settings.data('alarms') || [];
 var createAlarmItems = function(alarms) {
     var items = [];
@@ -218,9 +192,9 @@ var createAlarm = function(callback) {
 	date = new Date();
 	
     alarms.push({
-        time: formatTime( date.getHours(), date.getMinutes() + 2 ),
+        time: formatTime( date.getHours(), date.getMinutes() + 1 ),
         hour: date.getHours(),
-        minute: date.getMinutes() + 2,
+        minute: date.getMinutes() + 1,
         enabled: true,
 		allowVib: true
     });
@@ -252,7 +226,7 @@ main.on('select', function(e) {
                     items: alarmItems
                 });
                 console.log("success");
-                //hourChange.show();
+                hourChange.show();
             });
         });
     } else {

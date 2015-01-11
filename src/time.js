@@ -9,3 +9,24 @@ for (var i = 0; i < 60; i++) {
 
 var hourItems = createTimeItems(hours);
 var minutesItems = createTimeItems(minutes);
+
+var minutesChange = new UI.Menu({
+    section : [{
+        items : minutesItems
+    }]
+
+    minuteChange.on('select', function(e) {
+        minuteChange.hide();
+    });
+});
+
+var hourChange = new UI.Menu({
+    section : [{
+        items : hourItems
+    }];
+
+    hourChange.on('select', function(e) {
+        hourChange.hide();
+        minuteChange.show();
+    });
+});
