@@ -261,6 +261,7 @@ main.on('select', function(e) {
         });
 
         hourMenu.show();
+        console.log("loaded hourMenu");
 
         hourMenu.on('click', 'select', function() {
         });
