@@ -264,6 +264,7 @@ main.on('select', function(e) {
             switch(e.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
+                    console.log(e.item);
                     e.item.enabled = !e.item.enabled;
                     break;
                 case 1:
