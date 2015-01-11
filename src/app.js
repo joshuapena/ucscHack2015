@@ -108,8 +108,10 @@ var detectTimeLoop = function() {
 					card.hide();				
 				});
 			}
-		} else {
-			// else if not going off, make sure to allow vib for next time!
+		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
+					|| ( alarms[i].hour === date.getHours() && alarms[i].minute !== date.getMinutes() )
+					|| ( alarms[i].minute === date.getMinutes() && alarms[i].hour !== date.getHours() ) ) {
+			// make sure to allow vibrations after alarm minute has passed..
 			if ( !alarms[i].allowVib ) {
 				alarms[i].allowVib = true;
 			}
