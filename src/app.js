@@ -276,6 +276,8 @@ main.on('select', function(e) {
 		var timeText = new UI.Text({
 			text: formatTime( date.getHours(), date.getMinutes() ),
 			font: 'gothic-18-bold',
+			color: 'white',
+			backgroundColor: 'black',
 			textAlign: 'center',
 		});
 		
