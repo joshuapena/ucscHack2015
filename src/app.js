@@ -165,19 +165,17 @@ for (var i = 0; i < 60; i++) {
 	Formats time from the 24-hour clock to 12-hour
 */
 var formatTime = function( h, m ) {
-	var hour = ( h % 12 !== 0 ? h % 12 : 12 );
+    var hour = ( h % 12 !== 0 ? h % 12 : 12 );
     var minute = m < 10 ? "0" + m : m;
-	return hour + ":" + minute + " " + ( ( h < 12 ) ? "AM" : "PM" );
+    return hour + ":" + minute + " " + ( ( h < 12 ) ? "AM" : "PM" );
 };
 
 var formatHour = function( h ) {
-
-	return h % 12 != 0 ? h % 12 : 12
+    return h % 12 != 0 ? h % 12 : 12
 };
 
 var formatMinute = function( m ) {
-
-	return m < 10 ? "0" + m : m;
+    return m < 10 ? "0" + m : m;
 };
 
 // Sets up the alarms
@@ -269,8 +267,8 @@ main.on('select', function(e) {
     if (e.itemIndex === 0) {
         // Has a random card as a placeholder
         //var wind = new UI.Wind();
-		
-		var wind = new UI.Window({ backgroundColor: 'black'});
+        
+        var wind = new UI.Window({ backgroundColor: 'black'});
 		var timeText = new UI.Text({
 			text: formatTime( date.getHours(), date.getMinutes() ),
 			font: 'gothic-28-bold',
@@ -408,7 +406,89 @@ main.on('select', function(e) {
                     alarms[e.itemIndex - 1].enabled = !alarms[e.itemIndex - 1].enabled;
                     break;
                 case 1:
+                    var initalTimeValues = {
+                        time : alarms[e.itemIndex - 1].time,
+                        hour : alarms[e.itemIndex - 1].hour,
+                        minute : alarms[e.itemIndex - 1].minute,
+                        enabled : true,
+                        allowVib : true
+                    };
+                    
                     // Edit the time of the alarm
+                    var wind = new UI.Window({ backgroundColor: 'black'});
+                    var timeText = new UI.Text({
+                        text: formatTime( initalTimeValues.hour, initalTimeValues.minute ),
+                        font: 'gothic-28-bold',
+                        color: 'white',
+                        position: new Vector2(0, 0),
+                        size: new Vector2(144, 168),
+                        //backgroundColor: 'black',
+                        textAlign: 'center'
+                    });
+                    
+                    wind.show();
+                    console.log('window loaded');
+                    wind.add( timeText );
+                    console.log('added the text');
+                    
+                    var time = [ initalTimeValues.hour, initalTimeValues.minute, initalTimeValues.hour < 12 ? 'AM' : 'PM' ];
+                    var stage = 1;
+                    
+                    wind.on('click', 'select', function(e) {
+                        console.log('select clicked; stage complete');
+                        stage++;
+                        
+                        // done
+                        if ( stage > 3 ) {
+                            createAlarm( time, function() {
+                                alarmItems = createAlarmItems(alarms);
+                                console.log('Items done');
+                                console.log(alarmItems);
+                                wind.hide();
+                                main.show();
+                                main.section(0, section = {
+                                    items: alarmItems
+                                });
+                                console.log("success");
+                            });
+                        }
+                    });
+                    
+                    wind.on('click', 'up', function(e) {
+                        console.log("up clicked");
+                        console.log( "stage: " + stage );
+                        if ( stage === 1 ) {
+                            time[0] = ( time[0] + 1 ) % 24;
+                        } else if ( stage === 2 ) {
+                            time[1] = ( time[1] + 1 ) % 60;
+                        } else {
+                            time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
+                        }
+                        
+                        console.log(time[0]);
+                        timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
+                    });
+                    
+                    wind.on('click', 'down', function(e) {
+                        console.log('down clicked');
+                        console.log( "stage: " + stage );
+                        if ( stage === 1 ) {
+                            time[0] = ( time[0] - 1 ) % 24;
+                            if (time[0] < 0) {
+                                time[0] = 23;
+                            }
+                        } else if ( stage === 2 ) {
+                            time[1] = ( time[1] - 1 ) % 60;
+                            if (time[1] < 0) {
+                                time[1] = 59;
+                            }
+                        } else {
+                            time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
+                        }
+      
+                        console.log(time[0]);
+                        timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
+                    });
                     break;
                 case 2:
                     // Deletes the alarm
