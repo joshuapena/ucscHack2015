@@ -500,7 +500,7 @@ main.on('select', function(e) {
                     });
                     break;
                 case 2:
-                    // Deletes the alarm
+                    // Deletes the alarm/ 
                     alarms.splice(e.itemIndex - 1, 1);
                     console.log("deleted at : " + e.itemIndex - 1);
                     break;
