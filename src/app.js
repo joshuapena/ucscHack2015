@@ -45,7 +45,7 @@ var createAlarmItems = function(alarms) {
         for (var i = 0; i < alarms.length; i++) {
             items.push({
                 title: alarms[i].time,
-                subtitle: alarms[i].enabled
+                subtitle: alarms[i].enabled ? "Enabled" : "Disabled"
             });
             console.log(i);
         }
