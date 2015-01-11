@@ -115,7 +115,7 @@ var detectTimeLoop = function() {
 
                 var commandCard = new UI.Card();
                 commandCard.title('Do This');
-                var action = Math.floor(Math.random() * 3);
+                var action = Math.floor(Math.random() * 4);
 				var count = 0;
                 switch(action) {
                     case 0:
@@ -172,10 +172,10 @@ var detectTimeLoop = function() {
                     }
                     commandCard.body((3 - count) + " more times");
 
-                    action = Math.floor(Math.random() * 3);
+                    action = Math.floor(Math.random() * 4);
                     console.log("new action : " + action);
 
-                    if ( count >= 3 ) {
+                    if ( count >= 2 ) {
                         console.log("alarm has stopped");
                         alarms[index].inGame = false;
                         commandCard.hide();
