@@ -89,18 +89,20 @@ var detectTimeLoop = function() {
 				card.body('Press \'select\' to turn it off.');
 				card.show();
 				
+				var index = i;
+				
 				card.on('click', 'select', function() {
 					console.log('Alarm');
                     console.log(alarms);
-                    console.log(i);
-                    console.log(alarms[i]);
-					alarms[i].allowVib = false;
+                    console.log(index);
+                    console.log(alarms[index]);
+					alarms[index].allowVib = false;
 					card.hide();
 				});
 				
 				card.on('accelTap', function(e) {
 					console.log('Alarm');
-					alarms[i].allowVib = false;
+					alarms[index].allowVib = false;
 					card.hide();				
 				});
 			}
