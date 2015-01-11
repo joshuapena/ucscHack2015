@@ -171,8 +171,7 @@ var formatTime = function( h, m ) {
 };
 
 var formatHour = function( h ) {
-
-	return h % 12 != 0 ? h % 12 : 12
+	return h % 12 != 0 ? h % 12 : 12;
 };
 
 var formatMinute = function( m ) {
@@ -245,19 +244,17 @@ setTimeout(function() {
     main.show();
 }, 3000);
 
-var createAlarm = function( h, m, callback ) {
+var createAlarm = function( timeStuff, callback ) {
 
-	date = new Date();
-	
+	var finalHour = timeStuff[2] === "AM" ? timeStuff[0] : timeStuff[0] + 12;
     alarms.push({
-        time: formatTime( h, m ),
-        hour: h,
-        minute: m,
+        time: formatTime( finalHour, timeStuff[1] ),
+        hour: finalHour,
+        minute: timeStuff[1],
         enabled: true,
 		allowVib: true
     });
-    console.log("hour : " + date.getHours());
-    console.log("minute : " + date.getMinutes());
+    console.log("hour : " + date.getHours() + " minute : " + date.getMinutes());
     console.log("time : " + formatTime( date.getHours(), date.getMinutes() ));
     callback();
 };
@@ -277,9 +274,7 @@ var updateAlarm = function(timeStuff, index, callback) {
 };
 
 main.on('select', function(e) {
-
-	date = new Date();
-  console.log('setWindow');
+	console.log('setWindow');
 	
     console.log(e.sectionIndex);
     // If it is on the "New Alarm Option"
@@ -313,23 +308,22 @@ main.on('select', function(e) {
 			
 			// done
 			if ( stage > 3 ) {
-			
 				createAlarm( time[0], time[1], function() {
 					alarmItems = createAlarmItems(alarms);
 					console.log('Items done');
 					console.log(alarmItems);
-          wind.hide();
+					wind.hide();
 					main.section(0, section = {
 						items: alarmItems
 					});
 					console.log("success");
 				});
-				
 				main.show();
 			}
 		});
 		
 		wind.on('click', 'up', function(e) {
+		
       console.log("up clicked");
 	  console.log( "stage: " + stage );
 			if ( stage === 1 ) {
@@ -342,8 +336,6 @@ main.on('select', function(e) {
 			
 				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
 			}
-			
-      console.log(time[0]);
 			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
 		});
 		
@@ -354,14 +346,19 @@ main.on('select', function(e) {
 			if ( stage === 1 ) {
 				
 			  time[0] = ( time[0] - 1 ) % 24;
+			  if (time[0] < 0) {
+				time[0] = 11;
+			  }
 			} else if ( stage === 2 ) {
 				
 				time[1] = ( time[1] - 1 ) % 60;
+				time (time[1] < 0) {
+					time[1] = 59;
+				}
 			} else {
 			
 				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
 			}
-      
       console.log(time[0]);
 			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
 		});
