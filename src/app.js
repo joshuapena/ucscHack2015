@@ -186,13 +186,13 @@ var detectTimeLoop = function() {
                     console.log("tap tap");
 				});
             }
-		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
+		} /*else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
 					|| ( alarms[i].hour === date.getHours() && alarms[i].minute !== date.getMinutes() )
 					|| ( alarms[i].minute === date.getMinutes() && alarms[i].hour !== date.getHours() ) ) {
 			// make sure to allow vibrations after alarm minute has passed..
 			if ( !alarms[i].allowVib ) {
 				alarms[i].allowVib = true;
-			}
+			}*/
 		}
     }
 	
