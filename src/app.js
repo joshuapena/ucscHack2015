@@ -87,24 +87,86 @@ var detectTimeLoop = function() {
 			
             if ( date.getSeconds() === 0 ) {
 			
-				var card = new UI.Card();
-				card.title('Alarm');
-				card.subtitle('Is going off!');
-				card.body('Press 3 buttons or shake watch to turn it off.');
+				var instructionsCard = new UI.Card();
+				instructionsCard.title('Alarm');
+				instructionsCard.subtitle('Is going off!');
+				instructionsCard.body('Press 3 buttons or shake watch to turn it off.');
                 main.hide();
-				card.show();
+                splashScreen.show();
+
+                var commandCard = new UI.Card();
+                commandCard.title('Do This');
+                switch(action) {
+                    case 0:
+                        commandCard.subtitle("Press the select button");
+                        break;
+                    case 1:
+                        commandCard.subtitle("Press the up button");
+                        break;
+                    case 2:
+                        commandCard.subtitle("Press the down button");
+                        break;
+                    case 3:
+                        commandCard.subtitle("Shake the pebble");
+                        break;
+                    default:
+                        commandCard.subtitle("error");
+                        break;
+                }
+                commandCard.body((3 - count) + " more times");
+
+                setTimeout(function() {
+                    instructionsCard.hide();
+                    commandCard.show();
+                }, 3000);
+
+                var action = Math.floor(Math.random() * 3);
 				
 				var index = i;
 				var count = 0;
+
+                var checkDisable = function(response) {
+                    if (response) {
+                        count++;
+                    } else {
+                        count = 0;
+                    }
+                    commandCard.title('Do This');
+                    switch(action) {
+                        case 0:
+                            commandCard.subtitle("Press the select button");
+                            break;
+                        case 1:
+                            commandCard.subtitle("Press the up button");
+                            break;
+                        case 2:
+                            commandCard.subtitle("Press the down button");
+                            break;
+                        case 3:
+                            commandCard.subtitle("Shake the pebble");
+                            break;
+                        default:
+                            commandCard.subtitle("error");
+                            break;
+                    }
+                    commandCard.body((3 - count) + " more times");
+
+                    var action = Math.floor(Math.random() * 3);
+
+                    if ( count >= 3 ) {
+                        console.log("alarm has stopped");
+                        alarms[index].allowVib = false;
+                        commandCard.hide();
+                        main.show();
+                    }
+                    console.log("count : " + count);
+                };
+
 				
 				
 				/*
 					Increments the count, disables alarm if 3 combinations detected
 				*/
-				
-				
-				
-				
 				card.on('click', 'select', function(e) {
 					checkDisable(0);
 				});
@@ -137,21 +199,6 @@ var detectTimeLoop = function() {
 	}, 1000);
 };
 
-var checkDisable = function(action) {
-    if (action) {
-        count++;
-    } else {
-        count = 0;
-    }
-
-    if ( count >= 3 ) {
-        console.log("alarm has stopped");
-        alarms[index].allowVib = false;
-        card.hide();
-        main.show();
-    }
-    console.log("count : " + count);
-};
 
 detectTimeLoop();
 
