@@ -106,6 +106,8 @@ var detectTimeLoop = function() {
 			
                     if (action) {
                         count++;
+                    } else {
+                        count = 0;
                     }
 					
 					if ( count >= 3 ) {
