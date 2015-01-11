@@ -37,14 +37,13 @@ var createAlarmItems = function(alarms) {
         title: "Add New Alarm"
     });
     console.log("alarm length : " + alarms.length);
-    if (alarms.length > 0)
+    if (alarms.length > 0) {
         for (var i = 0; i < alarms.length; i++) {
             items.push({
                 title: alarms[i].time,
                 subtitle: alarms[i].enabled
             });
             console.log(i);
-        } catch (err) {
     }
     console.log("Created item list");
     return items;
