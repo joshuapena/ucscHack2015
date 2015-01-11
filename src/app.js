@@ -266,8 +266,8 @@ main.on('select', function(e) {
             switch(e.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
-                    console.log(e.item);
-                    alarms[e.itemIndex - 1].enabled = !alarms[e.itemIndex - 1].enabled;
+                    console.log(e.item.enabled);
+                    alarms[e.itemIndex - 0].enabled = !alarms[e.itemIndex - 0].enabled;
                     break;
                 case 1:
                     // Edit the time of the alarm
