@@ -76,6 +76,7 @@ var detectTimeLoop = function() {
 			console.log(i + ": I vibrated");
 			
             if ( date.getSeconds() === 0 ) {
+			
 				var card = new UI.Card();
 				card.title('Alarm');
 				card.subtitle('Is going off!');
