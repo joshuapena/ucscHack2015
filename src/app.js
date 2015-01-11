@@ -142,10 +142,11 @@ var detectTimeLoop = function() {
                     commandCard.show();
                 }, 3000);
 
-				
 				var index = i;
 
                 var checkDisable = function(response) {
+                    console.log('responce : ' + response);
+                    console.log('action : ' + action);
                     if (response === action) {
                         count++;
                     } else {
