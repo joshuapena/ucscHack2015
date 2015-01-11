@@ -102,9 +102,11 @@ var detectTimeLoop = function() {
 					Increments the count, disables alarm if 3 combinations detected
 				*/
 				
-				var checkDisable = function() {
-				
-					count++;
+				var checkDisable = function(action) {
+			
+                    if (action) {
+                        count++;
+                    }
 					
 					if ( count >= 3 ) {
                         console.log("alarm has stopped");
@@ -117,19 +119,19 @@ var detectTimeLoop = function() {
 				
 				
 				card.on('click', 'select', function(e) {
-					checkDisable();
+					checkDisable(0);
 				});
 				
 				card.on('click', 'up', function(e) {
-					checkDisable();
+					checkDisable(1);
 				});
 				
 				card.on('click', 'down', function(e) {
-					checkDisable();
+					checkDisable(2);
 				});
 				
 				card.on('accelTap', function(e) {
-					checkDisable();
+					checkDisable(3);
                     console.log("tap tap");
 				});
             }
