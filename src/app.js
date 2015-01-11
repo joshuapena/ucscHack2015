@@ -2,7 +2,7 @@
  * Welcome to Alarm48
  * 
  * The team :
- * Programmers : 
+ * Software Engineers : 
  * Joshua Pena
  * Tristan Iverson
  * 
@@ -110,7 +110,7 @@ var detectTimeLoop = function() {
 				var instructionsCard = new UI.Card();
 				instructionsCard.title('Alarm');
 				instructionsCard.subtitle('Is going off!');
-				instructionsCard.body('Press 3 buttons or shake watch to turn it off.');
+				instructionsCard.body('Follow the instructions to turn it off.');
                 main.hide();
 
                 var commandCard = new UI.Card();
@@ -146,7 +146,7 @@ var detectTimeLoop = function() {
 				var index = i;
 
                 var checkDisable = function(response) {
-                    if (response) {
+                    if (response === action) {
                         count++;
                     } else {
                         count = 0;
