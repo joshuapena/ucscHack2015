@@ -14,9 +14,12 @@
 var UI = require('ui');
 var Vibe = require('ui/vibe');
 var Settings = require('settings');
+var Accel = require('ui/accel');
 var date = new Date();
-
 //var Vector2 = require('vector2');
+
+// initialize
+Accel.init();
 
 // A for loop to make array of hours
 var hours = [];
@@ -56,16 +59,15 @@ var detectTimeLoop = function() {
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
 		
-		if ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
+		if ( alarms[i].enabled && alarms[i].allowVib && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
 			
-			// vibrates.. add more later 
 			Vibe.vibrate('long');
 			console.log(i + ": I vibrated"); 
 			
-			if ( !alarms[i].goingOff ) {
+			Vibe.vibrate('long');
+			console.log(i + ": I vibrated");
 			
-				alarms[i].goingOff = true;
-				
+			if ( date.getSeconds() == 0 ) {
 				var card = new UI.Card();
 				card.title('Alarm');
 				card.subtitle('Is going off!');
@@ -74,9 +76,20 @@ var detectTimeLoop = function() {
 				
 				card.on('click', 'select', function() {
 					console.log('Alarm');
-					alarms[i].goingOff = false;
+					alarms[i].allowVib = false;
 					card.hide();
 				});
+				
+				card.on('accelTap', function(e) {
+					console.log('Alarm');
+					alarms[i].allowVib = false;
+					card.hide();				
+				});
+			}
+		} else {
+			// else if not going off, make sure to allow vib for next time!
+			if ( !alarms[i].allowVib ) {
+				alarms[i].allowVib = true;
 			}
 		}
     }
@@ -171,8 +184,8 @@ var createAlarm = function(callback) {
         time: formatTime( date.getHours(), date.getMinutes() + 2 ),
         hour: date.getHours(),
         minute: date.getMinutes() + 2,
-        enabled: true
-		goingOff: false
+        enabled: true,
+		allowVib: false
     });
     console.log("hour : " + date.getHours());
     console.log("minute : " + date.getMinutes());
