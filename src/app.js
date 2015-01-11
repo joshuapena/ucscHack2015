@@ -30,7 +30,7 @@ for (var i = 0; i < 24; i++) {
 }
 var minutes = [];
 for (var i = 0; i < 60; i++) {
-    minutes.push(i + 1);
+    minutes.push(i);
 }
 */
 
