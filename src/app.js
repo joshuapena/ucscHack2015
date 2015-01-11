@@ -285,6 +285,8 @@ main.on('select', function(e) {
         alarmOptions.show();
 
         alarmOptions.on('select', function(f) {
+            var indexOfAlarm = f.itemIndex;
+            console.log(indexOfAlarm);
             switch(f.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
