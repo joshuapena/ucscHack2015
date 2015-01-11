@@ -220,7 +220,7 @@ splashScreen.show();
 setTimeout(function() {
     splashScreen.hide();
     main.show();
-}, 800);
+}, 1500);
 
 var createAlarm = function(callback) {
 
