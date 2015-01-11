@@ -255,11 +255,12 @@ main.on('select', function(e) {
             minute : null
         };
         var hourMenu = new UI.Menu({
-            section : [{
-                          title: "Hours",
-                items : [{
-                            title: "Hour 1"
-                        }]
+            sections: [{
+                items: [{
+                    title: "name"
+                }, {
+                    title: "Hello"
+                }]
             }]
         });
 
@@ -267,6 +268,7 @@ main.on('select', function(e) {
         console.log("loaded hourMenu");
 
         hourMenu.on('click', 'select', function() {
+            console.log("i have been clicked");
         });
 
         // When click the middle button it makes an alarm
