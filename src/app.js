@@ -292,7 +292,7 @@ main.on('select', function(e) {
             timeHolder.minute = f.itemIndex + 1;
             timeOfDayMenu.show();
         });
-        timeOfDay.on('select', function(g) {
+        timeOfDayMenu.on('select', function(g) {
             console.log("you have chosen : " + g.item.title);
             timeHolder.timeOfDay = g.item.title;
             hourMenu.hide();
