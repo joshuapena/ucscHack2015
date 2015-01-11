@@ -110,6 +110,9 @@ var detectTimeLoop = function() {
 						main.show();
 					}
                     console.log("count : " + count);
+                    if (count) {
+                        console.log("alarm has stopped");
+                    }
 				}
 				
 				
@@ -290,7 +293,7 @@ main.on('select', function(e) {
                     // Disable or Enable the Alarm
                     for (var i = 0; i < alarms.length; i++) {
                         console.log(i + " : " + alarms[i].enabled);
-                        console.log(f.indexItem + " : " + alarms.[f.itemIndex - 0].enabled);
+                        console.log(f.indexItem + " : " + alarms[f.itemIndex - 0].enabled);
                     }
                     alarms[f.itemIndex - 0].enabled = !alarms[f.itemIndex - 0].enabled;
                     break;
