@@ -23,7 +23,6 @@ var date = new Date();
 // initialize
 Accel.init();
 
-/*
 var hours = [];
 for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
@@ -32,7 +31,16 @@ var minutes = [];
 for (var i = 0; i < 60; i++) {
     minutes.push(i + 1);
 }
-*/
+
+var createTimeItems = function(time) {
+    var items = [];
+    for (var i = 0; i < time.length; i++) {
+        items.push({
+            title : time[i]
+        });
+    }
+    return items;
+};
 
 var alarms = Settings.data('alarms') || [];
 var createAlarmItems = function(alarms) {
@@ -56,17 +64,6 @@ var createAlarmItems = function(alarms) {
     return items;
 };
 
-/*
-var createTimeItems = function(time) {
-    var items = [];
-    for (var i = 0; i < time.length; i++) {
-        items.push({
-            title : time[i]
-        });
-    }
-    return items;
-};
-*/
 
 var detectTimeLoop = function() {
     date = new Date();
@@ -285,8 +282,6 @@ main.on('select', function(e) {
         alarmOptions.show();
 
         alarmOptions.on('select', function(f) {
-            var indexOfAlarm = e.itemIndex;
-            console.log('index of alarm : ' + indexOfAlarm);
             switch(f.itemIndex) {
                 case 0:
                     // Disable or Enable the Alarm
