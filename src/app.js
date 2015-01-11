@@ -77,6 +77,8 @@ var detectInGame = function() {
 
 	for ( var i = 0; i < alarms.length; i++ ) {
 	
+		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
+		
 		if ( alarms[i].inGame ) {
 		
 			return true;
