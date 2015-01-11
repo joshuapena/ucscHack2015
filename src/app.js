@@ -225,7 +225,7 @@ var createAlarm = function(dateItems, callback) {
 	
     alarms.push({
         time: formatTime( dateItems.hour, dateItems.minute ),
-        hour: dateItems.hour,
+        hour: dateItems.timeOfDay == "AM" ? dateItems.hour - 1 : dateItems.hour + 11,
         minute: dateItems.minute,
         timeOfDay: dateItems.timeOfDay,
         enabled: true,
