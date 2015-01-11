@@ -69,7 +69,7 @@ var createTimeItems = function(time) {
 var detectTimeLoop = function() {
     date = new Date();
 	for (var i = 0; i < alarms.length; i++) {
-	
+        console.log(alarms[i].allowVib;
 		//console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
 		//console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
