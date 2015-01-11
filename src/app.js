@@ -77,7 +77,7 @@ var detectTimeLoop = function() {
 			
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
-        console.log('does break');
+        console.log('doesnt break');
 		
 		if ( alarms[i].enabled && alarms[i].allowVib && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
             console.log('alarm goes off');
@@ -249,7 +249,7 @@ setTimeout(function() {
 
 var createAlarm = function( timeStuff, callback ) {
 
-	var finalHour = timeStuff[2] === "AM" ? timeStuff[0] : timeStuff[0] + 12;
+	var finalHour = timeStuff[0];
     alarms.push({
         time: formatTime( finalHour, timeStuff[1] ),
         hour: finalHour,
@@ -348,7 +348,7 @@ main.on('select', function(e) {
 				
                 time[0] = ( time[0] - 1 ) % 24;
                 if (time[0] < 0)
-                    time[0] = 11;
+                    time[0] = 23;
 			} else if ( stage === 2 ) {
                 time[1] = ( time[1] - 1 ) % 60;
                 if (time[1] < 0)
