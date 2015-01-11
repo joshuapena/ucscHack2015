@@ -312,20 +312,32 @@ main.on('select', function(e) {
 					alarmItems = createAlarmItems(alarms);
 					console.log('Items done');
 					console.log(alarmItems);
+<<<<<<< HEAD
 					wind.hide();
+=======
+          wind.hide();
+>>>>>>> time appears
 					main.section(0, section = {
 						items: alarmItems
 					});
 					console.log("success");
 				});
+<<<<<<< HEAD
+=======
+				
+>>>>>>> time appears
 				main.show();
 			}
 		});
 		
 		wind.on('click', 'up', function(e) {
+<<<<<<< HEAD
 		
       console.log("up clicked");
 	  console.log( "stage: " + stage );
+=======
+      console.log("up clicked");
+>>>>>>> time appears
 			if ( stage === 1 ) {
 				
 				time[0] = ( time[0] + 1 ) % 24;
@@ -342,7 +354,10 @@ main.on('select', function(e) {
 		
 		wind.on('click', 'down', function(e) {
       console.log('down clicked');
+<<<<<<< HEAD
 	  console.log( "stage: " + stage );
+=======
+>>>>>>> time appears
 			if ( stage === 1 ) {
 				
 			  time[0] = ( time[0] - 1 ) % 24;
