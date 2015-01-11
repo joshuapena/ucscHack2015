@@ -18,7 +18,7 @@ var Accel = require('ui/accel');
 var date = new Date();
 
 //var time = require('time.js');
-//var Vector2 = require('vector2');
+var Vector2 = require('vector2');
 
 // initialize
 Accel.init();
@@ -273,24 +273,28 @@ main.on('select', function(e) {
         // Has a random card as a placeholder
         //var wind = new UI.Wind();
 		
-		var wind = new UI.Window({ fullscreen: true });
+		var wind = new UI.Window({ backgroundColor: 'black'});
 		var timeText = new UI.Text({
 			text: formatTime( date.getHours(), date.getMinutes() ),
 			font: 'gothic-18-bold',
 			color: 'white',
-			backgroundColor: 'black',
-			textAlign: 'center',
+      position: new Vector2(0, 0),
+      size: new Vector2(144, 168),
+			//backgroundColor: 'black',
+			textAlign: 'center'
 		});
 		
-		wind.add( timeText );
 		wind.show();
+      console.log('window loaded');
+		wind.add( timeText );
+      console.log('added the text');
 		
 		// 
 		var time = [ date.getHours(), date.getMinutes(), date.getHours() < 12 ? 'AM' : 'PM' ];
 		var stage = 1;
 		
 		wind.on('click', 'select', function(e) {
-		console.log('first stage complete');
+		console.log('select clicked; stage complete');
 			stage++;
 			
 			// done
@@ -300,20 +304,19 @@ main.on('select', function(e) {
 					alarmItems = createAlarmItems(alarms);
 					console.log('Items done');
 					console.log(alarmItems);
-					card.hide();
+          wind.hide();
 					main.section(0, section = {
 						items: alarmItems
 					});
 					console.log("success");
 				});
 				
-				wind.hide();
 				main.show();
 			}
 		});
 		
 		wind.on('click', 'up', function(e) {
-		
+      console.log("up clicked");
 			if ( stage === 1 ) {
 				
 				time[0] = ( time[0] + 1 ) % 24;
@@ -330,7 +333,7 @@ main.on('select', function(e) {
 		
 		
 		wind.on('click', 'down', function(e) {
-		
+      console.log('down clicked');
 			if ( stage === 1 ) {
 				
 				time[0] = ( time[0] - 1 ) % 24;
