@@ -79,7 +79,7 @@ var detectTimeLoop = function() {
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
         console.log('doesnt break');
 		
-		if ( alarms[i].enabled && alarms[i].allowVib && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
+		if ( ( alarms[i].inGame ) || ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) {
             console.log('alarm goes off');
 			
 			Vibe.vibrate('long');
@@ -260,7 +260,7 @@ var createAlarm = function( timeStuff, callback ) {
         hour: finalHour,
         minute: timeStuff[1],
         enabled: true,
-		allowVib: true
+		inGame: false
     });
     console.log("hour : " + date.getHours() + " minute : " + date.getMinutes());
     console.log("time : " + formatTime( date.getHours(), date.getMinutes() ));
@@ -275,7 +275,7 @@ var updateAlarm = function(timeStuff, index, callback) {
         hour : finalHour,
         minute : timeStuff[1],
         enabled : true,
-        allowVib : true
+        inGame : false
     };
   
     callback();
