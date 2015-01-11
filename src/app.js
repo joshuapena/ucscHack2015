@@ -98,6 +98,7 @@ var detectTimeLoop = function() {
 
                 var commandCard = new UI.Card();
                 commandCard.title('Do This');
+                var action = Math.floor(Math.random() * 3);
                 switch(action) {
                     case 0:
                         commandCard.subtitle("Press the select button");
@@ -122,7 +123,6 @@ var detectTimeLoop = function() {
                     commandCard.show();
                 }, 3000);
 
-                var action = Math.floor(Math.random() * 3);
 				
 				var index = i;
 				var count = 0;
