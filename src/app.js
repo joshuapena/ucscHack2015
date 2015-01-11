@@ -308,20 +308,14 @@ main.on('select', function(e) {
 			
 			// done
 			if ( stage > 3 ) {
-				createAlarm( time[0], time[1], function() {
-                    console.log("1");
+				createAlarm(time,  function() {
 					alarmItems = createAlarmItems(alarms);
-                    console.log("2");
 					console.log('Items done');
-                    console.log("3");
 					console.log(alarmItems);
-                    console.log("4");
 					wind.hide();
-                    console.log("5");
 					main.section(0, section = {
 						items: alarmItems
 					});
-                    console.log("6");
 					console.log("success");
 				});
 				main.show();
