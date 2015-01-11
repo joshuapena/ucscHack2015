@@ -36,7 +36,7 @@ var createTimeItems = function(time) {
     var items = [];
     for (var i = 0; i < time.length; i++) {
         items.push({
-            title : time[i]
+            subtitle : time[i]
         });
     }
     return items;
