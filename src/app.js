@@ -245,14 +245,14 @@ setTimeout(function() {
     main.show();
 }, 800);
 
-var createAlarm = function(callback) {
+var createAlarm = function( h, m, callback ) {
 
 	date = new Date();
 	
     alarms.push({
-        time: formatTime( date.getHours(), date.getMinutes() + 1 ),
-        hour: date.getHours(),
-        minute: date.getMinutes() + 1,
+        time: formatTime( h, m ),
+        hour: h,
+        minute: m,
         enabled: true,
 		allowVib: true
     });
@@ -276,7 +276,7 @@ main.on('select', function(e) {
 		var wind = new UI.Window({ backgroundColor: 'black'});
 		var timeText = new UI.Text({
 			text: formatTime( date.getHours(), date.getMinutes() ),
-			font: 'gothic-18-bold',
+			font: 'gothic-28-bold',
 			color: 'white',
       position: new Vector2(0, 0),
       size: new Vector2(144, 168),
@@ -300,7 +300,7 @@ main.on('select', function(e) {
 			// done
 			if ( stage > 3 ) {
 			
-				createAlarm(function() {
+				createAlarm( time[0], time[1], function() {
 					alarmItems = createAlarmItems(alarms);
 					console.log('Items done');
 					console.log(alarmItems);
@@ -317,6 +317,7 @@ main.on('select', function(e) {
 		
 		wind.on('click', 'up', function(e) {
       console.log("up clicked");
+	  console.log( "stage: " + stage );
 			if ( stage === 1 ) {
 				
 				time[0] = ( time[0] + 1 ) % 24;
@@ -334,6 +335,7 @@ main.on('select', function(e) {
 		
 		wind.on('click', 'down', function(e) {
       console.log('down clicked');
+	  console.log( "stage: " + stage );
 			if ( stage === 1 ) {
 				
 				time[0] = ( time[0] - 1 ) % 24;
