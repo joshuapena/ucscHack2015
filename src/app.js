@@ -44,6 +44,7 @@ var createAlarmItems = function(alarms) {
                 subtitle: alarms[i].enabled
             });
             console.log(i);
+        }
     }
     console.log("Created item list");
     return items;
@@ -70,9 +71,6 @@ var detectTimeLoop = function() {
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
 		
 		if ( alarms[i].enabled && alarms[i].allowVib && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
-			
-			Vibe.vibrate('long');
-			console.log(i + ": I vibrated"); 
 			
 			Vibe.vibrate('long');
 			console.log(i + ": I vibrated");
