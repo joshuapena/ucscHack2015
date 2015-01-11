@@ -16,11 +16,14 @@ var Vibe = require('ui/vibe');
 var Settings = require('settings');
 var Accel = require('ui/accel');
 var date = new Date();
+
+var time = require('time.js');
 //var Vector2 = require('vector2');
 
 // initialize
 Accel.init();
 
+/*
 var hours = [];
 for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
@@ -29,6 +32,7 @@ var minutes = [];
 for (var i = 0; i < 60; i++) {
     minutes.push(i + 1);
 }
+*/
 
 var alarms = Settings.data('alarms') || [];
 var createAlarmItems = function(alarms) {
@@ -50,6 +54,7 @@ var createAlarmItems = function(alarms) {
     return items;
 };
 
+/*
 var createTimeItems = function(time) {
     var items = [];
     for (var i = 0; i < time.length; i++) {
@@ -59,6 +64,7 @@ var createTimeItems = function(time) {
     }
     return items;
 };
+*/
 
 var detectTimeLoop = function() {
     date = new Date();
@@ -227,7 +233,7 @@ main.on('select', function(e) {
                     items: alarmItems
                 });
                 console.log("success");
-                hourChange.show();
+                time.hourChange.show();
             });
         });
     } else {
