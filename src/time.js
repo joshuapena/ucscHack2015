@@ -12,6 +12,16 @@ for (var i = 0; i < 60; i++) {
 var hourItems = createTimeItems(hours);
 var minutesItems = createTimeItems(minutes);
 
+var createTimeItems = function(time) {
+    var items = [];
+    for (var i = 0; i < time.length; i++) {
+        items.push({
+            title : time[i]
+        });
+    }
+    return items;
+};
+
 var minutesChange = new UI.Menu({
     section : [{
         items : minutesItems
@@ -32,13 +42,3 @@ var hourChange = new UI.Menu({
         minuteChange.show();
     });
 });
-
-var createTimeItems = function(time) {
-    var items = [];
-    for (var i = 0; i < time.length; i++) {
-        items.push({
-            title : time[i]
-        });
-    }
-    return items;
-};
