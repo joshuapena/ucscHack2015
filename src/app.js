@@ -241,14 +241,29 @@ main.on('select', function(e) {
     // If it is on the "New Alarm Option"
     if (e.itemIndex === 0) {
         // Has a random card as a placeholder
-        //var wind = new UI.Wind();
-
+        /*
         var card = new UI.Card();
         card.title('A Card');
         card.subtitle('Is a Window');
         card.body('The simplest window type in Pebble.js.');
         card.show();
-        //wind.show();
+        */
+
+        var hourItems = createTimeItems(hours);
+        var hourMinute = {
+            hour : null,
+            minute : null
+        };
+        var hourMenu = new UI.Menu({
+            section : [{
+                items : hourItems
+            }]
+
+            hourMenu.on('click', 'select', function() {
+            });
+        });
+
+        hourMenu.show();
 
         // When click the middle button it makes an alarm
         card.on('click', 'select', function() {
