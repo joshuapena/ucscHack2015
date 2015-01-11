@@ -93,6 +93,7 @@ var detectTimeLoop = function() {
 				
 				var index = i;
 				var count = 0;
+            }
 				
 				
 				/*
@@ -129,7 +130,6 @@ var detectTimeLoop = function() {
 					checkDisable();
                     console.log("tap tap");
 				});
-            }
 		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
 					|| ( alarms[i].hour === date.getHours() && alarms[i].minute !== date.getMinutes() )
 					|| ( alarms[i].minute === date.getMinutes() && alarms[i].hour !== date.getHours() ) ) {
@@ -245,20 +245,17 @@ setTimeout(function() {
     main.show();
 }, 800);
 
-var createAlarm = function( h, m, callback ) {
-
-	date = new Date();
-	
+var createAlarm = function( timeStuff, callback ) {
+    var finalHour = timeStuff[2] === "AM" ? timeStuff[0] : timeStuff[0] + 12;
+  
     alarms.push({
-        time: formatTime( h, m ),
-        hour: h,
-        minute: m,
+        time: formatTime( finalHour, timeStuff[1] ),
+        hour: finalHour,
+        minute: timeStuff[1],
         enabled: true,
-		allowVib: true
+        allowVib: true
     });
-    console.log("hour : " + date.getHours());
-    console.log("minute : " + date.getMinutes());
-    console.log("time : " + formatTime( date.getHours(), date.getMinutes() ));
+  
     callback();
 };
 
@@ -300,18 +297,18 @@ main.on('select', function(e) {
 			// done
 			if ( stage > 3 ) {
 			
-				createAlarm( time[0], time[1], function() {
+				createAlarm( time, function() {
 					alarmItems = createAlarmItems(alarms);
 					console.log('Items done');
 					console.log(alarmItems);
           wind.hide();
-					main.section(0, section = {
+          main.show();
+          main.section(0, section = {
 						items: alarmItems
 					});
 					console.log("success");
 				});
 				
-				main.show();
 			}
 		});
 		
@@ -340,12 +337,18 @@ main.on('select', function(e) {
 			if ( stage === 1 ) {
 				
 			  time[0] = ( time[0] - 1 ) % 24;
+        if (time[0] < 0) {
+          time[0] = 23;
+        }
 			} else if ( stage === 2 ) {
 				
 				time[1] = ( time[1] - 1 ) % 60;
+        if (time[1] < 0) {
+          time[1] = 59;
+        }
 			} else {
 			
-				time[2] = ( time[2] === 'PM' ? 'PM' : 'AM' );
+				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
 			}
       
       console.log(time[0]);
