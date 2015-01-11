@@ -304,9 +304,9 @@ main.on('select', function(e) {
                 hourMenu.hide();
                 minuteMenu.hide();
                 timeOfDayMenu.hide();
-                main.section(0, section = [
+                main.section(0, section = {
                     items: alarmItems
-                ]);
+                });
             });
         });
 
