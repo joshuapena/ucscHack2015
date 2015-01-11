@@ -283,14 +283,14 @@ main.on('select', function(e) {
         console.log("loaded hourMenu");
 
         hourMenu.on('select', function(e) {
-            console.log("i have been clicked : " + e.itemIndex + 1);
+            console.log("i have been clicked : " + (e.itemIndex + 1));
             timeHolder.hour = e.itemIndex + 1;
             minuteMenu.show();
         });
         minuteMenu.on('select', function(f) {
-            console.log("you have chosen : " + f.itemIndex + 1 + " m");
+            console.log("you have chosen : " + (f.itemIndex + 1) + " m");
             timeHolder.minute = f.itemIndex + 1;
-            //timeOfDayMenu.show();
+            timeOfDayMenu.show();
         });
 
         // When click the middle button it makes an alarm
