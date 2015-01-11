@@ -219,14 +219,15 @@ setTimeout(function() {
     main.show();
 }, 800);
 
-var createAlarm = function(callback) {
+var createAlarm = function(dateItems, callback) {
 
 	date = new Date();
 	
     alarms.push({
-        time: formatTime( date.getHours(), date.getMinutes() + 1 ),
-        hour: date.getHours(),
-        minute: date.getMinutes() + 1,
+        time: formatTime( dateItems.hour, dateItems.minute ),
+        hour: dateItems.hour,
+        minute: dateItems.minute,
+        timeOfDay: dateItems.timeOfDay,
         enabled: true,
 		allowVib: true
     });
@@ -296,9 +297,17 @@ main.on('select', function(e) {
             console.log("you have chosen : " + g.item.title);
             timeHolder.timeOfDay = g.item.title;
             console.log('Alarm set at : ' + formatTime(timeHolder.hour, timeHolder.minute) + " " + timeHolder.timeOfDay);
-            hourMenu.hide();
-            minuteMenu.hide();
-            timeOfDayMenu.hide();
+            createAlarm(timeHolder, function() {
+                alarmItems = createAlarmItems(alarms);
+                console.log('Items done');
+
+                hourMenu.hide();
+                minuteMenu.hide();
+                timeOfDayMenu.hide();
+                main.section(0, section = {
+                    items: alarmItems
+                ]);
+            });
         });
 
         // When click the middle button it makes an alarm
