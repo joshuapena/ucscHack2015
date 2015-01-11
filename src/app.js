@@ -172,7 +172,7 @@ var formatTime = function( h, m ) {
 
 var formatHour = function( h ) {
 
-	return date.getHours() % 12 != 0 ? date.getHours() % 12 : 12
+	return h % 12 != 0 ? h % 12 : 12
 };
 
 var formatMinute = function( m ) {
@@ -329,6 +329,7 @@ main.on('select', function(e) {
 				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
 			}
 			
+      console.log(time[0]);
 			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
 		});
 		
@@ -338,7 +339,7 @@ main.on('select', function(e) {
 	  console.log( "stage: " + stage );
 			if ( stage === 1 ) {
 				
-				time[0] = ( time[0] - 1 ) % 24;
+			  time[0] = ( time[0] - 1 ) % 24;
 			} else if ( stage === 2 ) {
 				
 				time[1] = ( time[1] - 1 ) % 60;
@@ -346,7 +347,8 @@ main.on('select', function(e) {
 			
 				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
 			}
-			
+      
+      console.log(time[0]);
 			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
 		});
 		
