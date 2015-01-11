@@ -73,6 +73,19 @@ var createTimeItems = function(time) {
 };
 */
 
+var detectInGame = function() {
+
+	for ( var i = 0; i < alarms.length; i++ ) {
+	
+		if ( alarms[i].inGame ) {
+		
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 var detectTimeLoop = function() {
     date = new Date();
     console.log('being called');
@@ -83,7 +96,7 @@ var detectTimeLoop = function() {
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
 		
-		if ( ( alarms[i].inGame ) || ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) {
+		if ( !detectInGame() && ( ( alarms[i].inGame ) || ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) ) {
 			
 			Vibe.vibrate('long');
 			console.log(i + ": I vibrated");
@@ -162,7 +175,6 @@ var detectTimeLoop = function() {
                     if ( count >= 3 ) {
                         console.log("alarm has stopped");
                         alarms[index].inGame = false;
-                        alarms[index].allowVib = false;
                         commandCard.hide();
                         main.show();
                     }
