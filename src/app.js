@@ -295,9 +295,10 @@ main.on('select', function(e) {
         timeOfDayMenu.on('select', function(g) {
             console.log("you have chosen : " + g.item.title);
             timeHolder.timeOfDay = g.item.title;
+            console.log('Alarm set at : ' + formatTime(timeHolder.hour, timeHolder.minute) + " " + timeHolder.timeOfDay);
             hourMenu.hide();
             minuteMenu.hide();
-            timeOfDay.hide();
+            timeOfDayMenu.hide();
         });
 
         // When click the middle button it makes an alarm
