@@ -252,7 +252,7 @@ main.on('select', function(e) {
         var alarmOptions = new UI.Menu({
             sections : [{
                 items: [{
-                    title: e.item.enabled ? 'Disable' : 'Enable'
+                    title: alarms[e.itemIndex - 1].enabled ? 'Disable' : 'Enable'
                 }, {
                     title: 'Edit'
                 }, {
@@ -267,7 +267,7 @@ main.on('select', function(e) {
                 case 0:
                     // Disable or Enable the Alarm
                     console.log(e.item);
-                    e.item.enabled = !e.item.enabled;
+                    alarms[e.itemIndex - 1].enabled = !alarms[e.itemIndex - 1].enabled;
                     break;
                 case 1:
                     // Edit the time of the alarm
