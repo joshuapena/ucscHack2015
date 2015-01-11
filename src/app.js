@@ -21,10 +21,13 @@ var date = new Date();
 // initialize
 Accel.init();
 
-// A for loop to make array of hours
 var hours = [];
 for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
+}
+var minutes = [];
+for (var i = 0; i < 60); i++) {
+    minutes.push(i + 1);
 }
 
 var alarms = Settings.data('alarms') || [];
@@ -36,16 +39,24 @@ var createAlarmItems = function(alarms) {
     console.log("alarm length : " + alarms.length);
     if (alarms.length > 0)
         for (var i = 0; i < alarms.length; i++) {
-            try {
-                items.push({
-                    title: alarms[i].time,
-                    subtitle: alarms[i].enabled
-                });
-                console.log(i);
-            } catch (err) {
-            }
+            items.push({
+                title: alarms[i].time,
+                subtitle: alarms[i].enabled
+            });
+            console.log(i);
+        } catch (err) {
     }
     console.log("Created item list");
+    return items;
+};
+
+var createTimeItems = function(time) {
+    var items = [];
+    for (var i = 0; i < time.length; i++) {
+        items.push({
+            title : time[i];
+        });
+    }
     return items;
 };
 
@@ -215,6 +226,7 @@ main.on('select', function(e) {
                     items: alarmItems
                 });
                 console.log("success");
+                hourChange.show();
             });
         });
     } else {
@@ -267,4 +279,27 @@ main.on('select', function(e) {
         });
     }
     // Choose an option to chnage alarm
+});
+
+var hourChange = new UI.Menu({
+    var hourItems = createTimeItems(hours);
+    section : [{
+        items : hourItems
+    }];
+
+    timeChange.on('select', function(e) {
+        hourChange.hide();
+        minuteChange.show();
+    });
+});
+
+var minuteChange = new UI.Menu({
+    var minutesItems = createTimeItems(minutes);
+    section : [{
+        items : minutesItems
+    }];
+
+    minuteChange.on('select', function(e) {
+        minuteChange.hide();
+    });
 });
