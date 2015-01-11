@@ -143,9 +143,9 @@ var detectTimeLoop = function() {
 	setTimeout(function() {
 		detectTimeLoop();
 	}, 1000);
-
-    detectTimeLoop();
 };
+
+detectTimeLoop();
 
 
 /*
