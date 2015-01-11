@@ -265,6 +265,7 @@ var createAlarm = function(callback) {
 main.on('select', function(e) {
 
 	date = new Date();
+  console.log('setWindow');
 	
     console.log(e.sectionIndex);
     // If it is on the "New Alarm Option"
@@ -289,7 +290,7 @@ main.on('select', function(e) {
 		var stage = 1;
 		
 		wind.on('click', 'select', function(e) {
-		
+		console.log('first stage complete');
 			stage++;
 			
 			// done
