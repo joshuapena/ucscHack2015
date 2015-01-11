@@ -264,7 +264,7 @@ main.on('select', function(e) {
         hourMenu.show();
         console.log("loaded hourMenu");
 
-        hourMenu.on('click', 'select', function() {
+        hourMenu.on('select', function(e) {
             console.log("i have been clicked");
         });
 
