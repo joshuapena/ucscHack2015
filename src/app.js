@@ -268,6 +268,7 @@ main.on('select', function(e) {
                 items: minuteItems
             }]
         });
+        /*
         var timeOfDayMenu = new UI.Menu({
             title: "Time Of Day",
             sections: [{
@@ -276,6 +277,7 @@ main.on('select', function(e) {
                 title: "PM"
             }];
         });
+        */
 
         hourMenu.show();
         console.log("loaded hourMenu");
@@ -288,7 +290,7 @@ main.on('select', function(e) {
         minuteMenu.on('select', function(f) {
             console.log("you have chosen : " + f.itemIndex + 1 + " m");
             timeHolder.minute = f.itemIndex + 1;
-            timeOfDayMenu.show();
+            //timeOfDayMenu.show();
         });
 
         // When click the middle button it makes an alarm
