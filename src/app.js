@@ -258,12 +258,12 @@ main.on('select', function(e) {
             section : [{
                 items : hourItems
             }]
-
-            hourMenu.on('click', 'select', function() {
-            });
         });
 
         hourMenu.show();
+
+        hourMenu.on('click', 'select', function() {
+        });
 
         // When click the middle button it makes an alarm
         card.on('click', 'select', function() {
