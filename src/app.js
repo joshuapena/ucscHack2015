@@ -24,7 +24,7 @@ var date = new Date();
 Accel.init();
 
 var hours = [];
-for (var i = 0; i < 24; i++) {
+for (var i = 0; i < 12; i++) {
     hours.push(i + 1);
 }
 var minutes = [];
@@ -36,7 +36,7 @@ var createTimeItems = function(time) {
     var items = [];
     for (var i = 0; i < time.length; i++) {
         items.push({
-            subtitle : time[i]
+            title : time[i]
         });
     }
     return items;
@@ -255,6 +255,7 @@ main.on('select', function(e) {
             minute : null
         };
         var hourMenu = new UI.Menu({
+            title: "Hour",
             sections: [{
                 items: hourItems
             }]
