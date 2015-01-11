@@ -250,7 +250,7 @@ main.on('select', function(e) {
         var alarmOptions = new UI.Menu({
             sections : [{
                 items: [{
-                    title: 'Disable'
+                    title: e.item.enabled ? 'Disable' : 'Enable'
                 }, {
                     title: 'Edit'
                 }, {
@@ -280,14 +280,11 @@ main.on('select', function(e) {
                     break;
             }
             // Update the alarms and gets rid of the option menu
-            console.log('before : ' + alarmItems);
-            alarmItems = createAlarmItems(alarms);
             alarmOptions.hide();
             main.section(0, section = {
                 items: alarmItems
             });
             //console.log('updated alarms');
-            console.log('after : ' + alarmItems);
         });
     }
     // Choose an option to chnage alarm
