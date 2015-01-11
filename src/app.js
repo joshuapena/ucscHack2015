@@ -30,6 +30,7 @@ for (var i = 0; i < 60; i++) {
     minutes.push(i + 1);
 }
 
+/*
 var hourItems = createTimeItems(hours);
 var minutesItems = createTimeItems(minutes);
 
@@ -53,6 +54,7 @@ var hourChange = new UI.Menu({
         minuteChange.show();
     });
 });
+*/
 
 var alarms = Settings.data('alarms') || [];
 var createAlarmItems = function(alarms) {
@@ -247,7 +249,7 @@ main.on('select', function(e) {
                     items: alarmItems
                 });
                 console.log("success");
-                hourChange.show();
+                //hourChange.show();
             });
         });
     } else {
