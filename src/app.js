@@ -50,7 +50,9 @@ var createAlarmItems = function(alarms) {
             console.log(i);
         }
     }
-    console.log("Created item list");
+    console.log("created item list");
+    Settings.data('alarms', alarms);
+    console.log('saved item list');
     return items;
 };
 
