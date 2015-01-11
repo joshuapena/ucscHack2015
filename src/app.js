@@ -292,7 +292,7 @@ main.on('select', function(e) {
                     // Disable or Enable the Alarm
                     for (var i = 0; i < alarms.length; i++) {
                         console.log(i + " : " + alarms[i].enabled);
-                        console.log(e.itemIndex + 1 + " : " + alarms[e.itemIndex + 0].enabled);
+                        console.log(e.itemIndex - 2 + " : " + alarms[e.itemIndex - 2].enabled);
                     }
                     alarms[e.itemIndex - 0].enabled = !alarms[e.itemIndex - 0].enabled;
                     break;
@@ -301,8 +301,8 @@ main.on('select', function(e) {
                     break;
                 case 2:
                     // Deletes the alarm
-                    alarms.splice(f.itemIndex - 2, 1);
-                    console.log("deleted at : " + f.itemIndex - 2);
+                    alarms.splice(e.itemIndex - 2, 1);
+                    console.log("deleted at : " + e.itemIndex - 2);
                     break;
                 default:
                     console.log("error");
