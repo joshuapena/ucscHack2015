@@ -28,8 +28,8 @@ var minutesChange = new UI.Menu({
     }]
 });
 
-minuteChange.on('select', function(e) {
-    minuteChange.hide();
+minutesChange.on('select', function(e) {
+    minutesChange.hide();
 });
 
 
@@ -41,5 +41,5 @@ var hourChange = new UI.Menu({
 
 hourChange.on('select', function(e) {
     hourChange.hide();
-    minuteChange.show();
+    minutesChange.show();
 });
