@@ -278,7 +278,6 @@ main.on('select', function(e) {
                 }]
             }]
         });
-        */
 
         hourMenu.show();
         console.log("loaded hourMenu");
