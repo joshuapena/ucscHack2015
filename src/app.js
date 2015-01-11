@@ -290,7 +290,7 @@ main.on('select', function(e) {
                     // Disable or Enable the Alarm
                     for (var i = 0; i < alarms.length; i++) {
                         console.log(i + " : " + alarms[i].enabled);
-                        console.log(f.itemIndex + " : " + alarms[f.itemIndex - 0].enabled);
+                        console.log(f.itemIndex + 1 + " : " + alarms[f.itemIndex + 1].enabled);
                     }
                     alarms[f.itemIndex - 0].enabled = !alarms[f.itemIndex - 0].enabled;
                     break;
