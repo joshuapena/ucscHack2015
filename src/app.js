@@ -99,6 +99,7 @@ var detectTimeLoop = function() {
                     console.log(alarms[index]);
 					alarms[index].allowVib = false;
 					card.hide();
+                    main.show();
 				});
 				
 				card.on('accelTap', function(e) {
