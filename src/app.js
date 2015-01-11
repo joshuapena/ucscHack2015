@@ -87,6 +87,8 @@ var detectTimeLoop = function() {
 			
             if ( date.getSeconds() === 0 ) {
 			
+				alarms[i].inGame = true;
+				
 				var instructionsCard = new UI.Card();
 				instructionsCard.title('Alarm');
 				instructionsCard.subtitle('Is going off!');
