@@ -97,7 +97,7 @@ var detectTimeLoop = function() {
 			
         var success = true;
         for (var j = 0; j < alarms.length; j++) {
-            if (detectInGame) {
+            if (detectInGame()) {
                 success = false;
             }
         }
