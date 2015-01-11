@@ -256,11 +256,7 @@ main.on('select', function(e) {
         };
         var hourMenu = new UI.Menu({
             sections: [{
-                items: [{
-                    title: "name"
-                }, {
-                    title: "Hello"
-                }]
+                items: hourItems
             }]
         });
 
