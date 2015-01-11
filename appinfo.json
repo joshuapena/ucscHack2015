@@ -3,8 +3,8 @@
     "capabilities": [
         ""
     ],
-    "companyName": "32bazuka@gmail.com",
-    "longName": "ucscHack2015",
+    "companyName": "",
+    "longName": "UCSC Hack2015",
     "projectType": "pebblejs",
     "resources": {
         "media": [
@@ -31,7 +31,7 @@
             }
         ]
     },
-    "shortName": "ucscHack2015",
+    "shortName": "Alarm48",
     "uuid": "08d42e44-682b-4260-9056-18f2ead06fd1",
     "versionCode": 1,
     "versionLabel": "1.0",
