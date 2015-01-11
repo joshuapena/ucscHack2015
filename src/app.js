@@ -93,23 +93,41 @@ var detectTimeLoop = function() {
 				card.show();
 				
 				var index = i;
+				var count = 0;
 				
-				card.on('click', 'select', function() {
-					console.log('Alarm');
-                    console.log(alarms);
-                    console.log(index);
-                    console.log(alarms[index]);
-					alarms[index].allowVib = false;
-					card.hide();
-                    main.show();
+				
+				/*
+					Increments the count, disables alarm if 4 combinations detected
+				*/
+				
+				var checkDisable = function() {
+				
+					count++;
+					
+					if ( count >= 4 ) {
+					
+						alarms[index].allowVib = false;
+						card.hide();
+						main.show();
+					}
+				}
+				
+				
+				card.on('click', 'select', function(e) {
+					checkDisable();
 				});
+				
+				card.on('click', 'up', function(e) {
+					checkDisable();
+				})
+				
+				card.on('click', 'down', function(e) {
+					checkDisable();
+				})
 				
 				card.on('accelTap', function(e) {
-					console.log('Alarm');
-					alarms[index].allowVib = false;
-					card.hide();				
+					checkDisable();
 				});
-			}
 		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
 					|| ( alarms[i].hour === date.getHours() && alarms[i].minute !== date.getMinutes() )
 					|| ( alarms[i].minute === date.getMinutes() && alarms[i].hour !== date.getHours() ) ) {
