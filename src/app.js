@@ -110,6 +110,9 @@ var detectTimeLoop = function() {
 				
 				card.on('click', 'select', function() {
 					console.log('Alarm');
+                    console.log(alarms);
+                    console.log(i);
+                    console.log(alarms[i]);
 					alarms[i].allowVib = false;
 					card.hide();
 				});
