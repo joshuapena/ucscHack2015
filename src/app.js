@@ -233,8 +233,8 @@ main.on('select', function(e) {
                     items: alarmItems
                 });
                 console.log("success");
-                hourChange = new time.hourChange();
-                time.hourChange.show();
+                //hourChange = new time.hourChange();
+                //time.hourChange.show();
             });
         });
     } else {
