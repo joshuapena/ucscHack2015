@@ -102,22 +102,7 @@ var detectTimeLoop = function() {
 					Increments the count, disables alarm if 3 combinations detected
 				*/
 				
-				var checkDisable = function(action) {
-			
-                    if (action) {
-                        count++;
-                    } else {
-                        count = 0;
-                    }
-					
-					if ( count >= 3 ) {
-                        console.log("alarm has stopped");
-						alarms[index].allowVib = false;
-						card.hide();
-						main.show();
-					}
-                    console.log("count : " + count);
-				}
+				
 				
 				
 				card.on('click', 'select', function(e) {
@@ -150,6 +135,22 @@ var detectTimeLoop = function() {
 	setTimeout(function() {
 		detectTimeLoop();
 	}, 1000);
+};
+
+var checkDisable = function(action) {
+    if (action) {
+        count++;
+    } else {
+        count = 0;
+    }
+
+    if ( count >= 3 ) {
+        console.log("alarm has stopped");
+        alarms[index].allowVib = false;
+        card.hide();
+        main.show();
+    }
+    console.log("count : " + count);
 };
 
 detectTimeLoop();
