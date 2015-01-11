@@ -87,7 +87,7 @@ var detectTimeLoop = function() {
 				var card = new UI.Card();
 				card.title('Alarm');
 				card.subtitle('Is going off!');
-				card.body('Press \'select\' to turn it off.');
+				card.body('Press 3 buttons or shake watch to turn it off.');
                 main.hide();
 				card.show();
 				
@@ -103,7 +103,7 @@ var detectTimeLoop = function() {
 				
 					count++;
 					
-					if ( count >= 4 ) {
+					if ( count >= 3 ) {
                         console.log("alarm has stopped");
 						alarms[index].allowVib = false;
 						card.hide();
@@ -147,6 +147,20 @@ var detectTimeLoop = function() {
 
 detectTimeLoop();
 
+
+/*
+	Used in add/edit time
+*/
+
+var hours = [];
+for (var i = 0; i < 24; i++) {
+    hours.push(i + 1);
+}
+var minutes = [];
+for (var i = 0; i < 60; i++) {
+    minutes.push(i + 1);
+}
+
 /*
 	Formats time from the 24-hour clock to 12-hour
 */
@@ -156,6 +170,15 @@ var formatTime = function( h, m ) {
 	return hour + ":" + minute + " " + ( ( h < 12 ) ? "AM" : "PM" );
 };
 
+var formatHour = function( h ) {
+
+	return date.getHours() % 12 != 0 ? date.getHours() % 12 : 12
+};
+
+var formatMinute = function( m ) {
+
+	return m < 10 ? "0" + m : m;
+};
 
 // Sets up the alarms
 var alarmItems = createAlarmItems(alarms);
@@ -240,21 +263,96 @@ var createAlarm = function(callback) {
 };
 
 main.on('select', function(e) {
+
+	date = new Date();
+	
     console.log(e.sectionIndex);
     // If it is on the "New Alarm Option"
     if (e.itemIndex === 0) {
         // Has a random card as a placeholder
         //var wind = new UI.Wind();
-
+		
+		var wind = new UI.Window({ fullscreen: true });
+		var timeText = new UI.Text({
+			text: formatTime( date.getHours(), date.getMinutes() ),
+			font: 'gothic-18-bold',
+			textAlign: 'center',
+		});
+		
+		wind.add( timeText );
+		wind.show();
+		
+		// 
+		var time = [ date.getHours(), date.getMinutes(), date.getHours() < 12 ? 'AM' : 'PM' ];
+		var stage = 1;
+		
+		wind.on('click', 'select', function(e) {
+		
+			stage++;
+			
+			// done
+			if ( stage > 3 ) {
+			
+				createAlarm(function() {
+					alarmItems = createAlarmItems(alarms);
+					console.log('Items done');
+					console.log(alarmItems);
+					card.hide();
+					main.section(0, section = {
+						items: alarmItems
+					});
+					console.log("success");
+				});
+				
+				wind.hide();
+				main.show();
+			}
+		});
+		
+		wind.on('click', 'up', function(e) {
+		
+			if ( stage === 1 ) {
+				
+				time[0] = ( time[0] + 1 ) % 24;
+			} else if ( stage === 2 ) {
+				
+				time[1] = ( time[1] + 1 ) % 60;
+			} else {
+			
+				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
+			}
+			
+			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
+		});
+		
+		
+		wind.on('click', 'down', function(e) {
+		
+			if ( stage === 1 ) {
+				
+				time[0] = ( time[0] - 1 ) % 24;
+			} else if ( stage === 2 ) {
+				
+				time[1] = ( time[1] - 1 ) % 60;
+			} else {
+			
+				time[2] = ( time[2] === 'PM' ? 'AM' : 'PM' );
+			}
+			
+			timeText.text( formatHour( time[0] ) + ":" + formatMinute( time[1] ) + " " + time[2] );
+		});
+		
+		
+		/*
         var card = new UI.Card();
         card.title('A Card');
         card.subtitle('Is a Window');
         card.body('The simplest window type in Pebble.js.');
-        card.show();
+        card.show();*/
         //wind.show();
 
         // When click the middle button it makes an alarm
-        card.on('click', 'select', function() {
+        /*card.on('click', 'select', function() {
             createAlarm(function() {
                 alarmItems = createAlarmItems(alarms);
                 console.log('Items done');
@@ -267,7 +365,7 @@ main.on('select', function(e) {
                 //hourChange = new time.hourChange();
                 //time.hourChange.show();
             });
-        });
+        });*/
     } else {
         // Otherwise the user selects an alarm
         // Creates the Menu for Alarm Options
