@@ -19,7 +19,7 @@ var createTimeItems = function(time) {
     return items;
 };
 
-ar hourItems = createTimeItems(hours);
+var hourItems = createTimeItems(hours);
 var minutesItems = createTimeItems(minutes);
 
 var minutesChange = new UI.Menu({
