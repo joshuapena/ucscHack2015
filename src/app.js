@@ -271,9 +271,9 @@ main.on('select', function(e) {
         var timeOfDayMenu = new UI.Menu({
             title: "Time Of Day",
             sections: [{
-                title : "AM"
+                title: "AM"
             }, {
-                title : "PM"
+                title: "PM"
             }];
         });
 
