@@ -1,3 +1,5 @@
+var UI = require('ui');
+
 var hours = [];
 for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
