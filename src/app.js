@@ -195,7 +195,7 @@ var createAlarm = function(callback) {
         hour: date.getHours(),
         minute: date.getMinutes() + 2,
         enabled: true,
-		allowVib: false
+		allowVib: true
     });
     console.log("hour : " + date.getHours());
     console.log("minute : " + date.getMinutes());
