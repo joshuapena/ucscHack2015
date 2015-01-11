@@ -26,9 +26,33 @@ for (var i = 0; i < 24; i++) {
     hours.push(i + 1);
 }
 var minutes = [];
-for (var i = 0; i < 60); i++) {
+for (var i = 0; i < 60; i++) {
     minutes.push(i + 1);
 }
+
+var hourItems = createTimeItems(hours);
+var minutesItems = createTimeItems(minutes);
+
+var hourChange = new UI.Menu({
+    section : [{
+        items : hourItems
+    }];
+
+    timeChange.on('select', function(e) {
+        hourChange.hide();
+        minuteChange.show();
+    });
+});
+
+var minuteChange = new UI.Menu({
+    section : [{
+        items : minutesItems
+    }];
+
+    minuteChange.on('select', function(e) {
+        minuteChange.hide();
+    });
+});
 
 var alarms = Settings.data('alarms') || [];
 var createAlarmItems = function(alarms) {
@@ -54,7 +78,7 @@ var createTimeItems = function(time) {
     var items = [];
     for (var i = 0; i < time.length; i++) {
         items.push({
-            title : time[i];
+            title : time[i]
         });
     }
     return items;
@@ -75,7 +99,7 @@ var detectTimeLoop = function() {
 			Vibe.vibrate('long');
 			console.log(i + ": I vibrated");
 			
-			if ( date.getSeconds() == 0 ) {
+            if ( date.getSeconds() === 0 ) {
 				var card = new UI.Card();
 				card.title('Alarm');
 				card.subtitle('Is going off!');
@@ -116,7 +140,7 @@ var formatTime = function( h, m ) {
 	var hour = ( h % 12 !== 0 ? h % 12 : 12 );
     var minute = m < 10 ? "0" + m : m;
 	return hour + ":" + minute + " " + ( ( h < 12 ) ? "AM" : "PM" );
-}
+};
 
 
 // Sets up the alarms
@@ -278,25 +302,3 @@ main.on('select', function(e) {
     // Choose an option to chnage alarm
 });
 
-var hourChange = new UI.Menu({
-    var hourItems = createTimeItems(hours);
-    section : [{
-        items : hourItems
-    }];
-
-    timeChange.on('select', function(e) {
-        hourChange.hide();
-        minuteChange.show();
-    });
-});
-
-var minuteChange = new UI.Menu({
-    var minutesItems = createTimeItems(minutes);
-    section : [{
-        items : minutesItems
-    }];
-
-    minuteChange.on('select', function(e) {
-        minuteChange.hide();
-    });
-});
