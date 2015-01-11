@@ -115,9 +115,11 @@ var detectTimeLoop = function() {
 
                 var commandCard = new UI.Card();
                 commandCard.title('Do This');
-                var action = Math.floor(Math.random() * 4);
+                var action = {
+                    value : Math.floor(Math.random() * 4)
+                };
 				var count = 0;
-                switch(action) {
+                switch(action.value) {
                     case 0:
                         commandCard.subtitle("Press the select button");
                         break;
@@ -146,14 +148,14 @@ var detectTimeLoop = function() {
 
                 var checkDisable = function(response) {
                     console.log('responce : ' + response);
-                    console.log('action : ' + action);
-                    if (response === action) {
+                    console.log('action : ' + action.value);
+                    if (response === action.value) {
                         count++;
                     } else {
                         count = 0;
                     }
                     commandCard.title('Do This');
-                    switch(action) {
+                    switch(action.value) {
                         case 0:
                             commandCard.subtitle("Press the select button");
                             break;
@@ -172,8 +174,9 @@ var detectTimeLoop = function() {
                     }
                     commandCard.body((3 - count) + " more times");
 
-                    action = Math.floor(Math.random() * 4);
-                    console.log("new action : " + action);
+                    console.log("old action : " + action.value);
+                    action.value = Math.floor(Math.random() * 4);
+                    console.log("new action : " + action.value);
 
                     if ( count >= 2 ) {
                         console.log("alarm has stopped");
