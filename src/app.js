@@ -213,8 +213,8 @@ main.on('select', function(e) {
                     break;
                 case 2:
                     // Deletes the alarm
-                    alarms.splice(e.itemIndex, 1);
-                    console.log("deleted at : " + e.itemIndex);
+                    alarms.splice(e.itemIndex - 2, 1);
+                    console.log("deleted at : " + e.itemIndex - 2);
                     break;
                 default:
                     console.log("error");
