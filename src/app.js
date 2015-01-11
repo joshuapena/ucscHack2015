@@ -96,7 +96,6 @@ var detectTimeLoop = function() {
 				
 				var index = i;
 				var count = 0;
-            }
 				
 				
 				/*
@@ -133,6 +132,7 @@ var detectTimeLoop = function() {
 					checkDisable();
                     console.log("tap tap");
 				});
+            }
 		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
 					|| ( alarms[i].hour === date.getHours() && alarms[i].minute !== date.getMinutes() )
 					|| ( alarms[i].minute === date.getMinutes() && alarms[i].hour !== date.getHours() ) ) {
