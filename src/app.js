@@ -33,6 +33,16 @@ for (var i = 0; i < 60; i++) {
 var hourItems = createTimeItems(hours);
 var minutesItems = createTimeItems(minutes);
 
+var minuteChange = new UI.Menu({
+    section : [{
+        items : minutesItems
+    }];
+
+    minuteChange.on('select', function(e) {
+        minuteChange.hide();
+    });
+});
+
 var hourChange = new UI.Menu({
     section : [{
         items : hourItems
@@ -41,16 +51,6 @@ var hourChange = new UI.Menu({
     timeChange.on('select', function(e) {
         hourChange.hide();
         minuteChange.show();
-    });
-});
-
-var minuteChange = new UI.Menu({
-    section : [{
-        items : minutesItems
-    }];
-
-    minuteChange.on('select', function(e) {
-        minuteChange.hide();
     });
 });
 
