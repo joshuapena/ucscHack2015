@@ -26,19 +26,20 @@ var minutesChange = new UI.Menu({
     section : [{
         items : minutesItems
     }]
-
-    minuteChange.on('select', function(e) {
-        minuteChange.hide();
-    });
 });
+
+minuteChange.on('select', function(e) {
+    minuteChange.hide();
+});
+
 
 var hourChange = new UI.Menu({
     section : [{
         items : hourItems
     }];
+});
 
-    hourChange.on('select', function(e) {
-        hourChange.hide();
-        minuteChange.show();
-    });
+hourChange.on('select', function(e) {
+    hourChange.hide();
+    minuteChange.show();
 });
