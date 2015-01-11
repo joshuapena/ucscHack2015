@@ -56,10 +56,28 @@ var detectTimeLoop = function() {
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
 		
-		if ( alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
+		if ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
+			
 			// vibrates.. add more later 
 			Vibe.vibrate('long');
-		console.log(i + ": I vibrated"); 
+			console.log(i + ": I vibrated"); 
+			
+			if ( !alarms[i].goingOff ) {
+			
+				alarms[i].goingOff = true;
+				
+				var card = new UI.Card();
+				card.title('Alarm');
+				card.subtitle('Is going off!');
+				card.body('Press \'select\' to turn it off.');
+				card.show();
+				
+				card.on('click', 'select', function() {
+					console.log('Alarm');
+					alarms[i].goingOff = false;
+					card.hide();
+				});
+			}
 		}
     }
 	
@@ -146,11 +164,15 @@ setTimeout(function() {
 }, 800);
 
 var createAlarm = function(callback) {
+
+	date = new Date();
+	
     alarms.push({
         time: formatTime( date.getHours(), date.getMinutes() + 2 ),
         hour: date.getHours(),
         minute: date.getMinutes() + 2,
         enabled: true
+		goingOff: false
     });
     console.log("hour : " + date.getHours());
     console.log("minute : " + date.getMinutes());
