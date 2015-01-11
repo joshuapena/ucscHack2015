@@ -77,10 +77,8 @@ var detectTimeLoop = function() {
 			
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
-        console.log('doesnt break');
 		
 		if ( ( alarms[i].inGame ) || ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) {
-            console.log('alarm goes off');
 			
 			Vibe.vibrate('long');
 			console.log(i + ": I vibrated");
@@ -170,19 +168,19 @@ var detectTimeLoop = function() {
 				/*
 					Increments the count, disables alarm if 3 combinations detected
 				*/
-				card.on('click', 'select', function(e) {
+				commandCard.on('click', 'select', function(e) {
 					checkDisable(0);
 				});
 				
-				card.on('click', 'up', function(e) {
+				commmandCard.on('click', 'up', function(e) {
 					checkDisable(1);
 				});
 				
-				card.on('click', 'down', function(e) {
+				commandCard.on('click', 'down', function(e) {
 					checkDisable(2);
 				});
 				
-				card.on('accelTap', function(e) {
+				commandCard.on('accelTap', function(e) {
 					checkDisable(3);
                     console.log("tap tap");
 				});
