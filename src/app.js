@@ -96,7 +96,7 @@ var detectTimeLoop = function() {
 				
 				
 				/*
-					Increments the count, disables alarm if 4 combinations detected
+					Increments the count, disables alarm if 3 combinations detected
 				*/
 				
 				var checkDisable = function() {
