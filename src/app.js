@@ -221,14 +221,14 @@ main.on('select', function(e) {
                     break;
             }
             // Update the alarms and gets rid of the option menu
-            console.log(alarmItems);
+            console.log('before : ' + alarmItems);
             alarmItems = createAlarmItems(alarms);
             alarmOptions.hide();
             main.section(0, section = {
                 items: alarmItems
             });
-            console.log('updated alarms');
-            console.log(alarmItems);
+            //console.log('updated alarms');
+            console.log('after : ' + alarmItems);
         });
     }
     // Choose an option to chnage alarm
