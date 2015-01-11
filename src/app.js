@@ -109,6 +109,7 @@ var detectTimeLoop = function() {
 						card.hide();
 						main.show();
 					}
+                    console.log("count : " + count);
 				}
 				
 				
