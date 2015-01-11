@@ -185,10 +185,10 @@ main.show();
 
 // The Splashscreen
 var splashScreen = new UI.Card({
-    title: 'Alarm',
+    title: 'Alarm48',
     icon: 'images/menu_icon.png',
-    subtitle: 'Welcome to Our App',
-    body: 'This is the splash page'
+    subtitle: 'The Alarm Built in 48 Hours',
+    body: 'UCSC Hack 2015'
     //banner (future plans)
 });
 
