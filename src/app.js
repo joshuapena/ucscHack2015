@@ -72,13 +72,15 @@ var detectTimeLoop = function() {
     date = new Date();
     console.log('being called');
 	for (var i = 0; i < alarms.length; i++) {
-		//console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
-		//console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
+		console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
+		console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
+        console.log('does break');
 		
 		if ( alarms[i].enabled && alarms[i].allowVib && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) {
+            console.log('alarm goes off');
 			
 			Vibe.vibrate('long');
 			console.log(i + ": I vibrated");
