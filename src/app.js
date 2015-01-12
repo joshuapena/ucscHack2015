@@ -86,23 +86,43 @@ var detectInGame = function() {
 	}
 	
 	return false;
-}
+};
 
+var checkEarlierAlarm = function( i ) {
+    
+    for (var j = 0; j < alarms.length; j++) {
+        if (!alarms[j].hour || !alarms[j].minute) { break; }
+        if (alarms[j].inGame && ((alarms[i].hour === alarms[j].hour && alarms[j].minute < alarms[i].minute) 
+                                 || alarms[j].hour < alarms[i].hour) ) {
+            return false;    
+        }
+    }
+    
+    return true;
+}
 var detectTimeLoop = function() {
     date = new Date();
     console.log('being called');
 	for (var i = 0; i < alarms.length; i++) {
-		console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
-		console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
+		//console.log("alarm " + alarms[i].hour + "h " + alarms[i].minute + "m");
+		//console.log("actual " + date.getHours() + "h  " + date.getMinutes() + "m");
 			
 		// break if no longer valid alarm(s)
 		if ( !alarms[i].hour || !alarms[i].minute ) { break; }
 		
-		if ( ( ( alarms[i].inGame ) || ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) ) {
+		if ( ( alarms[i].enabled && alarms[i].hour == date.getHours() && alarms[i].minute == date.getMinutes() ) ) {
 			
-			Vibe.vibrate('long');
-			console.log(i + ": I vibrated");
-			
+            // this should stop alarms that go off after one is already inGame
+            if (!checkEarlierAlarm( i )) {
+                alarms[i].inGame = false;
+                continue;
+            }
+            
+            if (alarms[i].inGame) {
+		    	Vibe.vibrate('long');
+	    		//console.log(i + ": I vibrated");
+            }
+            // call only once
             if ( date.getSeconds() === 0 ) {
 			
 				alarms[i].inGame = true;
@@ -116,7 +136,7 @@ var detectTimeLoop = function() {
                 var commandCard = new UI.Card();
                 commandCard.title('Do This');
                 var action = {
-                    value : Math.floor(Math.random() * 4)
+                    value : Math.floor(Math.random() * 3)
                 };
 				var count = 0;
                 switch(action.value) {
@@ -155,6 +175,8 @@ var detectTimeLoop = function() {
                         count = 0;
                     }
                     commandCard.title('Do This');
+                    
+                    action.value = Math.floor(Math.random() * 3);
                     switch(action.value) {
                         case 0:
                             commandCard.subtitle("Press the select button");
@@ -175,23 +197,25 @@ var detectTimeLoop = function() {
                     commandCard.body((3 - count) + " more times");
 
                     console.log("old action : " + action.value);
-                    action.value = Math.floor(Math.random() * 4);
                     console.log("new action : " + action.value);
 
-                    if ( count >= 2 ) {
+                    if ( count >= 3 ) {
                         console.log("alarm has stopped");
                         alarms[index].inGame = false;
+                        alarms[index].enabled = false;
+                        console.log(index);
+                        console.log(alarms[index]);
+                        console.log(alarms[index].inGame);
                         commandCard.hide();
+                        alarmItems = createAlarmItems(alarms);
+                        main.section(0, section = {
+                            items: alarmItems
+                        });
                         main.show();
                     }
                     console.log("count : " + count);
                 };
-
-				
-				
-				/*
-					Increments the count, disables alarm if 3 combinations detected
-				*/
+                
 				commandCard.on('click', 'select', function(e) {
 					checkDisable(0);
 				});
@@ -204,10 +228,10 @@ var detectTimeLoop = function() {
 					checkDisable(2);
 				});
 				
-				commandCard.on('accelTap', function(e) {
-					checkDisable(3);
-                    console.log("tap tap");
-				});
+				//commandCard.on('accelTap', function(e) {
+				//	checkDisable(3);
+                //    console.log("tap tap");
+				//});
             }
             /*
 		} else if ( alarms[i].hour !== date.getHours() && alarms[i].minute !== date.getMinutes() 
@@ -327,7 +351,15 @@ setTimeout(function() {
 }, 3000);
 
 var createAlarm = function( timeStuff, callback ) {
+    var success = true;
+    for (var i = 0; i < alarms.length; i++) {
+        if (alarms[i].hour == timeStuff[0] && alarms[i].minute == timeStuff[1]) {
+            alarms[i].enabled = true;
+            success = false;
+        }
+    }
 
+    if (success) {
 	var finalHour = timeStuff[0];
     alarms.push({
         time: formatTime( finalHour, timeStuff[1] ),
@@ -351,6 +383,7 @@ var updateAlarm = function(timeStuff, index, callback) {
         enabled : true,
         inGame : false
     };
+    }
   
     callback();
 };
@@ -395,7 +428,7 @@ main.on('select', function(e) {
 					console.log('Items done');
 					console.log(alarmItems);
 					wind.hide();
-					main.section(0, section = {
+                    main.section(0, section = {
 						items: alarmItems
 					});
 					console.log("success");
